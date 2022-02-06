@@ -13,8 +13,15 @@ namespace Lab6_OOP
 {
     public partial class Form1 : Form
     {
-        public bool ctrlPress = false;
+        public bool ctrlPress = false; // для выделения нескольких объектов
+        public bool shiftPress = false; // для увеличения размера (shift +)
+        static Color c = Color.White;
         Storage storObj = new Storage(10);
+        СObject[] ObjList = 
+            {new CCircle(0,0,c),
+            new CTriangle(0,0,c),
+
+        };
         string cur_select = "CCircle"; // текущий выбор фигуры, которая будет создаваться при нажатии на пустое место 
         public Form1()
             {
@@ -24,6 +31,7 @@ namespace Lab6_OOP
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             ctrlPress = e.Control;
+            shiftPress = e.Shift;
             if (e.KeyCode == Keys.Delete) // выделенные объекты удалятся из хранилища, и произойдет перерисовка
             {
                 for (int i=0; i<storObj.get_count(); ++i)
@@ -41,6 +49,7 @@ namespace Lab6_OOP
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
             ctrlPress = e.Control;
+            shiftPress = e.Shift;
         }
         private void setAllHighlightFalse() 
         {
@@ -60,18 +69,23 @@ namespace Lab6_OOP
                     if (storObj.get_el(i).mouseClick_on_Object(e.X, e.Y))
                         ind = i;
 
-                // не попали по объекту - убираем все выделения, 
-                // создаем новый объект и считаем, что мы попали по нему
+                // не попали по объекту 
                 if (ind == -1)
                 {
+                    // убираем все выделения
                     setAllHighlightFalse();
-                    //Object newObj = new Object;
-                    storObj.add(new CCircle(e.X, e.Y,25, Brush.normBrush.Color));
+
+                    // создаем новый объект
+                    СObject newObj = createObj();
+                    СObject newObj1 = newObj.new_obj(e.X, e.Y,Brush.normBrush.Color);
+                    storObj.add(newObj1);
+
+                    //считаем, что мы попали по нему
                     ind = storObj.get_count()-1;
                 }
                 else
                 {
-                    // попали по кругу - проверяем ctrl
+                    // попали по сущ-му объекту - проверяем ctrl
                     // если ctrl не зажат - убираем остальные выделения
                     if (ctrlPress != true)
                     {
@@ -88,6 +102,15 @@ namespace Lab6_OOP
             for (int i = 0; i < storObj.get_count(); ++i)
                 if (storObj.get_el(i) != null)
                     storObj.get_el(i).draw(e);
+        }
+        private СObject createObj()
+        {
+            for (int i=0; i < 2; ++i)
+            {
+                if (ObjList[i].classname() == cur_select)
+                    return ObjList[i];
+            }
+            return new CCircle(0,0,c);
         }
 
         private void btn_red_Click(object sender, EventArgs e)
@@ -110,7 +133,7 @@ namespace Lab6_OOP
         }
         private void btn_shape_Click(object sender, EventArgs e)
         {
-            string cur_select = ((Button)sender).Name.ToString();
+            cur_select = ((Button)sender).Name.ToString();
         }
     }
     public static class Brush

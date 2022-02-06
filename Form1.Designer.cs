@@ -743,6 +743,7 @@ namespace Lab6_OOP
             this.CTriangle.Size = new System.Drawing.Size(38, 35);
             this.CTriangle.TabIndex = 3;
             this.CTriangle.UseVisualStyleBackColor = false;
+            this.CTriangle.Click += new System.EventHandler(this.btn_shape_Click);
             // 
             // CCircle
             // 
