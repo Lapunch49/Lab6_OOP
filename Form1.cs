@@ -15,11 +15,12 @@ namespace Lab6_OOP
     {
         public bool ctrlPress = false;
         Storage storObj = new Storage(10);
-        string cur_select = "CCircle";
+        string cur_select = "CCircle"; // текущий выбор фигуры, которая будет создаваться при нажатии на пустое место 
         public Form1()
             {
                 InitializeComponent();
-            }
+                this.KeyPreview = true;
+        }
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             ctrlPress = e.Control;
@@ -43,7 +44,7 @@ namespace Lab6_OOP
         }
         private void setAllHighlightFalse() 
         {
-            // в хранилище меняем у выделенных кругов св. выделенности
+            // в хранилище меняем у выделенных объектов св. выделенности
             for (int i = 0; i < storObj.get_count(); ++i)
                 if (storObj.get_el(i).get_highlighted() == true)
                     storObj.get_el(i).change_highlight();
@@ -54,16 +55,18 @@ namespace Lab6_OOP
             {
                 int ind = -1; // попадание по кругу с индексом ind
 
-                // определяем попадание по существующему кругу 
+                // определяем попадание по существующему объекту 
                 for (int i = 0; i < storObj.get_count(); ++i)
                     if (storObj.get_el(i).mouseClick_on_Object(e.X, e.Y))
                         ind = i;
 
-                // не попали по кругу - убираем все выделения, создаем новый круг и считаем, что мы попали по нему
+                // не попали по объекту - убираем все выделения, 
+                // создаем новый объект и считаем, что мы попали по нему
                 if (ind == -1)
                 {
                     setAllHighlightFalse();
-                    storObj.add(new CCircle(e.X, e.Y,25,Color.Black));
+                    //Object newObj = new Object;
+                    storObj.add(new CCircle(e.X, e.Y,25, Brush.normBrush.Color));
                     ind = storObj.get_count()-1;
                 }
                 else
@@ -91,11 +94,29 @@ namespace Lab6_OOP
         {
             //Graphics g = 
         }
+
+        private void btn_color_Click(object sender, EventArgs e)
+        {
+            Brush.normBrush.Color = ((Button)sender).BackColor;
+        }
+
+        private void btn_other_Click(object sender, EventArgs e)
+        {
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                Brush.normBrush.Color = colorDialog1.Color;
+                //((Button)sender).BackColor = Brush.normBrush.Color;
+            }
+        }
+        private void btn_shape_Click(object sender, EventArgs e)
+        {
+            string cur_select = ((Button)sender).Name.ToString();
+        }
     }
     public static class Brush
     {
-        public static SolidBrush violBrush = new SolidBrush(Color.FromArgb(141, 143, 240));
-        public static SolidBrush pinkBrush = new SolidBrush(Color.FromArgb(219, 125, 171));
+        public static SolidBrush normBrush = new SolidBrush(Color.LightPink);
+        public static SolidBrush highlightBrush = new SolidBrush(Color.Red);
     }
 }
 

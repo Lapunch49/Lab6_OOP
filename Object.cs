@@ -25,24 +25,25 @@ namespace Lab6_OOP
     }
     public class CCircle : СObject
     {
-        private int x, y, r;
+        private int r;
+        private Point p;
         public CCircle(int x, int y, int r, Color color)
         {
-            this.x = x;
-            this.y = y;
+            this.p.X = x;
+            this.p.Y = y;
             this.r = r;
             this.color = color;
         }
         public override void draw(PaintEventArgs e)
         {
-            //Graphics g = Graphics.FromImage(Form1.bmp);
+            Brush.normBrush.Color = color;
             if (highlighted == false)
-                e.Graphics.FillEllipse(Brush.violBrush, x - r, y - r, r * 2, r * 2);
-            else e.Graphics.FillEllipse(Brush.pinkBrush, x - r, y - r, r * 2, r * 2);
+                e.Graphics.FillEllipse(Brush.normBrush, p.X - r, p.Y - r, r * 2, r * 2);
+            else e.Graphics.FillEllipse(Brush.highlightBrush, p.X - r, p.Y - r, r * 2, r * 2);
         }
         public override bool mouseClick_on_Object(int x_, int y_)
         {
-            if ((x_ - x)* (x_ - x)+ (y_ - y)* (y_ - y) <= r * r)
+            if ((x_ - p.X)* (x_ - p.X) + (y_ - p.Y) * (y_ - p.Y) <= r * r)
                 return true;
             else return false;
         }
@@ -51,19 +52,19 @@ namespace Lab6_OOP
     public class CTriangle : СObject
     {
         private Point x, y, z;
-        public CTriangle(Point x, Point y, Point z)
+        public CTriangle(Point x, Point y, Point z, Color col)
         {
             this.x = x;
             this.y = y;
             this.z = z;
+            color = col;
         }
         public override void draw(PaintEventArgs e)
         {
             //Graphics g = Graphics.FromImage(Form1.bmp);
-            //if (highlighted == false)
-            //    e.Graphics.FillEllipse(Brush.violBrush, x - r, y - r, r * 2, r * 2);
-            //else e.Graphics.FillEllipse(Brush.pinkBrush, x - r, y - r, r * 2, r * 2);
-            //e.Graphics.
+            if (highlighted == false)
+                e.Graphics.FillPolygon(Brush.normBrush, new Point[] { x, y, z });
+            else e.Graphics.FillPolygon(Brush.highlightBrush, new Point[] { x, y, z });
         }
         public override bool mouseClick_on_Object(int x_, int y_)
         {
