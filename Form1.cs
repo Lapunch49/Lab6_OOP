@@ -32,11 +32,9 @@ namespace Lab6_OOP
         }
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            ctrlPress = e.Control;
-            shiftPress = e.Shift;
             if (e.KeyCode == Keys.Delete) // выделенные объекты удалятся из хранилища, и произойдет перерисовка
             {
-                for (int i=0; i<storObj.get_count(); ++i)
+                for (int i = 0; i < storObj.get_count(); ++i)
                 {
                     if (storObj.get_el(i).get_highlighted() == true)
                     {
@@ -44,15 +42,16 @@ namespace Lab6_OOP
                         i--;
                     }
                 }
-                pictureBox1.Invalidate();
+                //pictureBox1.Invalidate();
             }
+
             // увеличение размера объектов 
             if (e.KeyCode == Keys.Oemplus && shiftPress == true)
             {
                 for (int i = 0; i < storObj.get_count(); ++i)
                     if (storObj.get_el(i).get_highlighted() == true)
                         storObj.get_el(i).resize(true);
-                pictureBox1.Invalidate();
+                //pictureBox1.Invalidate();
             }
             // уменьшение размера объектов
             if (e.KeyCode == Keys.OemMinus)
@@ -60,8 +59,28 @@ namespace Lab6_OOP
                 for (int i = 0; i < storObj.get_count(); ++i)
                     if (storObj.get_el(i).get_highlighted() == true)
                         storObj.get_el(i).resize(false);
-                pictureBox1.Invalidate();
+                //pictureBox1.Invalidate();
             }
+
+            // передвижение объектов вправо-влево-вверх-вниз
+            int move = 0;
+            switch (e.KeyCode)
+            {
+                case Keys.Left : { move = -1; break; }
+                case Keys.Right: { move = 1; break; }
+                case Keys.Up: { move = 2; break; }
+                case Keys.Down: { move = -2; break; }
+                default: break;
+            }
+            if (move != 0)
+            {
+                for (int i = 0; i < storObj.get_count(); ++i)
+                    if (storObj.get_el(i).get_highlighted() == true)
+                        storObj.get_el(i).move(move);
+            }
+            pictureBox1.Invalidate();
+            ctrlPress = e.Control;
+            shiftPress = e.Shift;
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)

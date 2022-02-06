@@ -8,10 +8,10 @@ namespace Lab6_OOP
 {
     public class СObject
     {
-        public СObject() { }
         protected bool highlighted = false;
         protected Color color;
         protected int x, y;
+        public СObject() { }
         public virtual void draw(PaintEventArgs e) { }
         public virtual bool mouseClick_on_Object(int x_, int y_) { return false; }
         public void change_highlight()
@@ -34,6 +34,17 @@ namespace Lab6_OOP
             return new СObject();
         }
         public virtual void resize(bool inc) { }
+        public void move(int move)
+        {
+            switch (move)
+            {
+                case 1: { x += 10; break; }
+                case -1: { x -= 10; break; }
+                case 2: { y -= 10; break; }
+                case -2: { y += 10; break; }
+                default: break;
+            }
+        }
     }
     public class CCircle : СObject
     {
