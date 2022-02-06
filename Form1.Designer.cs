@@ -526,7 +526,7 @@ namespace Lab6_OOP
             this.btn_red.Size = new System.Drawing.Size(0, 0);
             this.btn_red.TabIndex = 2;
             this.btn_red.UseVisualStyleBackColor = false;
-            this.btn_red.Click += new System.EventHandler(this.btn_red_Click);
+            this.btn_red.Click += new System.EventHandler(this.btn_color_Click);
             // 
             // button14
             // 
@@ -645,6 +645,7 @@ namespace Lab6_OOP
             this.button7.Size = new System.Drawing.Size(38, 35);
             this.button7.TabIndex = 10;
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.btn_shape_Click);
             // 
             // button8
             // 
@@ -659,6 +660,7 @@ namespace Lab6_OOP
             this.button8.Size = new System.Drawing.Size(38, 35);
             this.button8.TabIndex = 9;
             this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.btn_shape_Click);
             // 
             // button9
             // 
@@ -673,6 +675,7 @@ namespace Lab6_OOP
             this.button9.Size = new System.Drawing.Size(38, 35);
             this.button9.TabIndex = 8;
             this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.btn_shape_Click);
             // 
             // button4
             // 
@@ -687,6 +690,7 @@ namespace Lab6_OOP
             this.button4.Size = new System.Drawing.Size(38, 35);
             this.button4.TabIndex = 7;
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.btn_shape_Click);
             // 
             // CEllipse
             // 
@@ -701,6 +705,7 @@ namespace Lab6_OOP
             this.CEllipse.Size = new System.Drawing.Size(38, 35);
             this.CEllipse.TabIndex = 6;
             this.CEllipse.UseVisualStyleBackColor = false;
+            this.CEllipse.Click += new System.EventHandler(this.btn_shape_Click);
             // 
             // CRectangle
             // 
@@ -715,6 +720,7 @@ namespace Lab6_OOP
             this.CRectangle.Size = new System.Drawing.Size(38, 35);
             this.CRectangle.TabIndex = 5;
             this.CRectangle.UseVisualStyleBackColor = false;
+            this.CRectangle.Click += new System.EventHandler(this.btn_shape_Click);
             // 
             // CSquare
             // 
@@ -729,6 +735,7 @@ namespace Lab6_OOP
             this.CSquare.Size = new System.Drawing.Size(38, 35);
             this.CSquare.TabIndex = 4;
             this.CSquare.UseVisualStyleBackColor = false;
+            this.CSquare.Click += new System.EventHandler(this.btn_shape_Click);
             // 
             // CTriangle
             // 

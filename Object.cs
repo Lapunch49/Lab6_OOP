@@ -24,11 +24,16 @@ namespace Lab6_OOP
         {
             return highlighted;
         }
+        public void set_color(Color new_color)
+        {
+            color = new_color;
+        }
         public virtual string classname() { return "Cbject"; }
         public virtual СObject new_obj(int x, int y, Color c)
         {
             return new СObject();
         }
+        public virtual void resize(bool inc) { }
     }
     public class CCircle : СObject
     {
@@ -56,6 +61,11 @@ namespace Lab6_OOP
         public override СObject new_obj(int x, int y, Color color)
         {
             return new CCircle(x, y, color);
+        }
+        public override void resize(bool inc) {
+            if (inc == true)
+                r += 10;
+            else if (r>0) r -= 10;
         }
     };
 
@@ -87,5 +97,87 @@ namespace Lab6_OOP
         {
             return new CTriangle(x, y, color);
         }
+        public override void resize(bool inc)
+        {
+            if (inc == true)
+                l += 10;
+            else if (l > 5) l -= 10;
+        }
     };
+    public class CRectangle : СObject
+    {
+        protected int h = 50, w = 70;
+        public CRectangle(int x, int y, Color col)
+        {
+            this.x = x;
+            this.y = y;
+            color = col;
+        }
+        public override void draw(PaintEventArgs e)
+        {
+            Brush.normBrush.Color = color;
+            if (highlighted == false)
+                e.Graphics.FillRectangle(Brush.normBrush, x - w / 2, y - h / 2, w, h);
+            else e.Graphics.FillRectangle(Brush.highlightBrush, x - w / 2, y - h / 2, w, h);
+        }
+        public override bool mouseClick_on_Object(int x_, int y_)
+        {
+            if ((x + w / 2) >= x_ && (x - w / 2) <= x_ && (y + h / 2) >= y_ && (y - h / 2) <= y_)
+                return true;
+            else return false;
+        }
+        public override string classname() { return "CRectangle"; }
+        public override СObject new_obj(int x, int y, Color color)
+        {
+            return new CRectangle(x, y, color);
+        }
+        public override void resize(bool inc)
+        {
+            if (inc == true)
+            {
+                w += 10; h += 10;
+            }
+            else if (h > 10)
+            {
+                w -= 10; h -= 10;
+            }
+               
+        }
+    };
+    public class CSquare : CRectangle
+    {
+        public CSquare(int x, int y, Color col):base(x, y, col)
+        {
+            w = 50;
+        }
+        public override string classname() { return "CSquare"; }
+        public override СObject new_obj(int x, int y, Color color)
+        {
+            return new CSquare(x, y, color);
+        }
+    }
+    public class CEllipse : CRectangle
+    {
+        public CEllipse(int x, int y, Color col) : base(x, y, col)
+        {
+        }
+        public override void draw(PaintEventArgs e)
+        {
+            Brush.normBrush.Color = color;
+            if (highlighted == false)
+                e.Graphics.FillEllipse(Brush.normBrush, x - w / 2, y - h / 2, w, h);
+            else e.Graphics.FillEllipse(Brush.highlightBrush, x - w / 2, y - h / 2, w, h);
+        }
+        public override bool mouseClick_on_Object(int x_, int y_)
+        {
+            if ((x + w / 2) >= x_ && (x - w / 2) <= x_ && (y + h / 2) >= y_ && (y - h / 2) <= y_)
+                return true;
+            else return false;
+        }
+        public override string classname() { return "CEllipse"; }
+        public override СObject new_obj(int x, int y, Color color)
+        {
+            return new CEllipse(x, y, color);
+        }
+    }
 }

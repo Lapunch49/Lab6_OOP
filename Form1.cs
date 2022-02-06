@@ -20,7 +20,9 @@ namespace Lab6_OOP
         СObject[] ObjList = 
             {new CCircle(0,0,c),
             new CTriangle(0,0,c),
-
+            new CRectangle(0,0, c),
+            new CSquare(0,0, c),
+            new CEllipse(0,0,c)
         };
         string cur_select = "CCircle"; // текущий выбор фигуры, которая будет создаваться при нажатии на пустое место 
         public Form1()
@@ -44,8 +46,24 @@ namespace Lab6_OOP
                 }
                 pictureBox1.Invalidate();
             }
-
+            // увеличение размера объектов 
+            if (e.KeyCode == Keys.Oemplus && shiftPress == true)
+            {
+                for (int i = 0; i < storObj.get_count(); ++i)
+                    if (storObj.get_el(i).get_highlighted() == true)
+                        storObj.get_el(i).resize(true);
+                pictureBox1.Invalidate();
+            }
+            // уменьшение размера объектов
+            if (e.KeyCode == Keys.OemMinus)
+            {
+                for (int i = 0; i < storObj.get_count(); ++i)
+                    if (storObj.get_el(i).get_highlighted() == true)
+                        storObj.get_el(i).resize(false);
+                pictureBox1.Invalidate();
+            }
         }
+
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
             ctrlPress = e.Control;
@@ -77,8 +95,8 @@ namespace Lab6_OOP
 
                     // создаем новый объект
                     СObject newObj = createObj();
-                    СObject newObj1 = newObj.new_obj(e.X, e.Y,Brush.normBrush.Color);
-                    storObj.add(newObj1);
+                    newObj = newObj.new_obj(e.X, e.Y,Brush.normBrush.Color);
+                    storObj.add(newObj);
 
                     //считаем, что мы попали по нему
                     ind = storObj.get_count()-1;
@@ -105,7 +123,7 @@ namespace Lab6_OOP
         }
         private СObject createObj()
         {
-            for (int i=0; i < 2; ++i)
+            for (int i=0; i < ObjList.Length; ++i)
             {
                 if (ObjList[i].classname() == cur_select)
                     return ObjList[i];
@@ -113,14 +131,15 @@ namespace Lab6_OOP
             return new CCircle(0,0,c);
         }
 
-        private void btn_red_Click(object sender, EventArgs e)
-        {
-            //Graphics g = 
-        }
-
         private void btn_color_Click(object sender, EventArgs e)
         {
-            Brush.normBrush.Color = ((Button)sender).BackColor;
+            Color new_color = ((Button)sender).BackColor;
+            // у выделенных объектов меняем цвет
+            for (int i = 0; i < storObj.get_count(); ++i)
+                if (storObj.get_el(i).get_highlighted() == true)
+                    storObj.get_el(i).set_color(new_color);
+            // меняем текущий цвет, используемый при рисовании новых фигур
+            Brush.normBrush.Color = new_color;
         }
 
         private void btn_other_Click(object sender, EventArgs e)
