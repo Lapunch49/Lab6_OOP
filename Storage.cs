@@ -7,23 +7,23 @@ namespace Lab6_OOP
     public class Storage
     {
         private int n, k; // размер и кол-во эл-в
-        public Object[] st;
+        public СObject[] st;
         public Storage()
         {
             n = 1;
-            st = new Object[n];
+            st = new СObject[n];
             st[0] = null; // или default
             k = 0;
         }
         public Storage(int size)
         {
             n = size;
-            st = new Object[n];
+            st = new СObject[n];
             k = 0;
             for (int i = 0; i < n; ++i)
                 st[i] = null;
         }
-        public void add(Object new_el)
+        public void add(СObject new_el)
         {
             if (k < n)
             {
@@ -33,7 +33,7 @@ namespace Lab6_OOP
             else
             {
                 n = n * 2;
-                Object[] st_ = new Object[n];
+                СObject[] st_ = new СObject[n];
                 for (int i = 0; i < k; ++i)
                     st_[i] = st[i];
                 st_[k] = new_el;
@@ -50,7 +50,7 @@ namespace Lab6_OOP
             k = k - 1;
             st[k] = null;
         }
-        public Object get_el(int ind)
+        public СObject get_el(int ind)
         {
             return st[ind];
         }
