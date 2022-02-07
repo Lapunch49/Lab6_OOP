@@ -17,12 +17,13 @@ namespace Lab6_OOP
         public bool shiftPress = false; // для увеличения размера (shift +)
         static Color c = Color.White;
         Storage storObj = new Storage(10);
-        СObject[] ObjList = 
+        СObject[] ObjList =
             {new CCircle(0,0,c),
             new CTriangle(0,0,c),
             new CRectangle(0,0, c),
             new CSquare(0,0, c),
-            new CEllipse(0,0,c)
+            new CEllipse(0,0,c),
+            new CRhomb(0,0,c)
         };
         string cur_select = "CCircle"; // текущий выбор фигуры, которая будет создаваться при нажатии на пустое место 
         public Form1()
@@ -42,25 +43,25 @@ namespace Lab6_OOP
                         i--;
                     }
                 }
-                //pictureBox1.Invalidate();
             }
 
+            // увеличение-уменьшение размера объектов 
+            bool changeSize = false;
+            bool size_delt = false;
             // увеличение размера объектов 
             if (e.KeyCode == Keys.Oemplus && shiftPress == true)
             {
-                for (int i = 0; i < storObj.get_count(); ++i)
-                    if (storObj.get_el(i).get_highlighted() == true)
-                        storObj.get_el(i).resize(true, pictureBox1.Width, pictureBox1.Height);
-                //pictureBox1.Invalidate();
+                changeSize = true;
+                size_delt = true;
             }
             // уменьшение размера объектов
-            if (e.KeyCode == Keys.OemMinus)
-            {
+            if (e.KeyCode == Keys.OemMinus) 
+                changeSize = true;
+            // применяем изменения к объектам
+            if (changeSize == true)
                 for (int i = 0; i < storObj.get_count(); ++i)
                     if (storObj.get_el(i).get_highlighted() == true)
-                        storObj.get_el(i).resize(false, pictureBox1.Width, pictureBox1.Height);
-                //pictureBox1.Invalidate();
-            }
+                        storObj.get_el(i).resize(size_delt, pictureBox1.Width, pictureBox1.Height);
 
             // передвижение объектов вправо-влево-вверх-вниз
             int move = 0;
@@ -80,6 +81,7 @@ namespace Lab6_OOP
             }
 
             pictureBox1.Invalidate();
+
             ctrlPress = e.Control;
             shiftPress = e.Shift;
         }
@@ -167,12 +169,21 @@ namespace Lab6_OOP
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 Brush.normBrush.Color = colorDialog1.Color;
-                //((Button)sender).BackColor = Brush.normBrush.Color;
             }
         }
         private void btn_shape_Click(object sender, EventArgs e)
         {
             cur_select = ((Button)sender).Name.ToString();
+        }
+
+        private void btn_clear_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < storObj.get_count(); ++i)
+            {
+                storObj.del(i);
+                i--;
+            }
+            pictureBox1.Invalidate();
         }
     }
     public static class Brush

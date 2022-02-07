@@ -33,7 +33,7 @@ namespace Lab6_OOP
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.button11 = new System.Windows.Forms.Button();
+            this.btn_clear = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -73,10 +73,10 @@ namespace Lab6_OOP
             this.btn_blac = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lb_shape = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.CPolygon = new System.Windows.Forms.Button();
+            this.CTrapeze = new System.Windows.Forms.Button();
+            this.CLine = new System.Windows.Forms.Button();
+            this.CRhomb = new System.Windows.Forms.Button();
             this.CEllipse = new System.Windows.Forms.Button();
             this.CRectangle = new System.Windows.Forms.Button();
             this.CSquare = new System.Windows.Forms.Button();
@@ -129,21 +129,23 @@ namespace Lab6_OOP
             // panel7
             // 
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel7.Controls.Add(this.button11);
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel7.Controls.Add(this.btn_clear);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(0, 434);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(145, 41);
+            this.panel7.Size = new System.Drawing.Size(145, 40);
             this.panel7.TabIndex = 17;
             // 
-            // button11
+            // btn_clear
             // 
-            this.button11.Location = new System.Drawing.Point(25, 5);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(94, 23);
-            this.button11.TabIndex = 16;
-            this.button11.Text = "Clear";
-            this.button11.UseVisualStyleBackColor = true;
+            this.btn_clear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btn_clear.Location = new System.Drawing.Point(25, 5);
+            this.btn_clear.Name = "btn_clear";
+            this.btn_clear.Size = new System.Drawing.Size(94, 23);
+            this.btn_clear.TabIndex = 16;
+            this.btn_clear.Text = "Clear";
+            this.btn_clear.UseVisualStyleBackColor = true;
+            this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
             // 
             // panel6
             // 
@@ -610,10 +612,10 @@ namespace Lab6_OOP
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.lb_shape);
-            this.panel3.Controls.Add(this.button7);
-            this.panel3.Controls.Add(this.button8);
-            this.panel3.Controls.Add(this.button9);
-            this.panel3.Controls.Add(this.button4);
+            this.panel3.Controls.Add(this.CPolygon);
+            this.panel3.Controls.Add(this.CTrapeze);
+            this.panel3.Controls.Add(this.CLine);
+            this.panel3.Controls.Add(this.CRhomb);
             this.panel3.Controls.Add(this.CEllipse);
             this.panel3.Controls.Add(this.CRectangle);
             this.panel3.Controls.Add(this.CSquare);
@@ -634,65 +636,65 @@ namespace Lab6_OOP
             this.lb_shape.TabIndex = 11;
             this.lb_shape.Text = "Shape";
             // 
-            // button7
+            // CPolygon
             // 
-            this.button7.BackColor = System.Drawing.Color.Gainsboro;
-            this.button7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button7.BackgroundImage")));
-            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button7.Location = new System.Drawing.Point(98, 109);
-            this.button7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(38, 35);
-            this.button7.TabIndex = 10;
-            this.button7.UseVisualStyleBackColor = false;
-            this.button7.Click += new System.EventHandler(this.btn_shape_Click);
+            this.CPolygon.BackColor = System.Drawing.Color.Gainsboro;
+            this.CPolygon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CPolygon.BackgroundImage")));
+            this.CPolygon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.CPolygon.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.CPolygon.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.CPolygon.Location = new System.Drawing.Point(98, 109);
+            this.CPolygon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CPolygon.Name = "CPolygon";
+            this.CPolygon.Size = new System.Drawing.Size(38, 35);
+            this.CPolygon.TabIndex = 10;
+            this.CPolygon.UseVisualStyleBackColor = false;
+            this.CPolygon.Click += new System.EventHandler(this.btn_shape_Click);
             // 
-            // button8
+            // CTrapeze
             // 
-            this.button8.BackColor = System.Drawing.Color.Gainsboro;
-            this.button8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button8.BackgroundImage")));
-            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button8.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button8.Location = new System.Drawing.Point(53, 109);
-            this.button8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(38, 35);
-            this.button8.TabIndex = 9;
-            this.button8.UseVisualStyleBackColor = false;
-            this.button8.Click += new System.EventHandler(this.btn_shape_Click);
+            this.CTrapeze.BackColor = System.Drawing.Color.Gainsboro;
+            this.CTrapeze.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CTrapeze.BackgroundImage")));
+            this.CTrapeze.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.CTrapeze.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.CTrapeze.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.CTrapeze.Location = new System.Drawing.Point(53, 109);
+            this.CTrapeze.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CTrapeze.Name = "CTrapeze";
+            this.CTrapeze.Size = new System.Drawing.Size(38, 35);
+            this.CTrapeze.TabIndex = 9;
+            this.CTrapeze.UseVisualStyleBackColor = false;
+            this.CTrapeze.Click += new System.EventHandler(this.btn_shape_Click);
             // 
-            // button9
+            // CLine
             // 
-            this.button9.BackColor = System.Drawing.Color.Gainsboro;
-            this.button9.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button9.BackgroundImage")));
-            this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button9.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button9.Location = new System.Drawing.Point(8, 109);
-            this.button9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(38, 35);
-            this.button9.TabIndex = 8;
-            this.button9.UseVisualStyleBackColor = false;
-            this.button9.Click += new System.EventHandler(this.btn_shape_Click);
+            this.CLine.BackColor = System.Drawing.Color.Gainsboro;
+            this.CLine.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CLine.BackgroundImage")));
+            this.CLine.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.CLine.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.CLine.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.CLine.Location = new System.Drawing.Point(8, 109);
+            this.CLine.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CLine.Name = "CLine";
+            this.CLine.Size = new System.Drawing.Size(38, 35);
+            this.CLine.TabIndex = 8;
+            this.CLine.UseVisualStyleBackColor = false;
+            this.CLine.Click += new System.EventHandler(this.btn_shape_Click);
             // 
-            // button4
+            // CRhomb
             // 
-            this.button4.BackColor = System.Drawing.Color.Gainsboro;
-            this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button4.Location = new System.Drawing.Point(98, 69);
-            this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(38, 35);
-            this.button4.TabIndex = 7;
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.btn_shape_Click);
+            this.CRhomb.BackColor = System.Drawing.Color.Gainsboro;
+            this.CRhomb.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CRhomb.BackgroundImage")));
+            this.CRhomb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.CRhomb.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.CRhomb.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.CRhomb.Location = new System.Drawing.Point(98, 69);
+            this.CRhomb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CRhomb.Name = "CRhomb";
+            this.CRhomb.Size = new System.Drawing.Size(38, 35);
+            this.CRhomb.TabIndex = 7;
+            this.CRhomb.UseVisualStyleBackColor = false;
+            this.CRhomb.Click += new System.EventHandler(this.btn_shape_Click);
             // 
             // CEllipse
             // 
@@ -839,13 +841,13 @@ namespace Lab6_OOP
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lb_shape;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button CPolygon;
+        private System.Windows.Forms.Button CTrapeze;
+        private System.Windows.Forms.Button CLine;
+        private System.Windows.Forms.Button CRhomb;
         private System.Windows.Forms.Button btn_CEllipse;
         private System.Windows.Forms.Button CRectangle;
-        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button btn_clear;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Button btn_other;
         private System.Windows.Forms.Button button12;

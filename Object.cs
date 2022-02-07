@@ -124,11 +124,18 @@ namespace Lab6_OOP
             if (inc == true)
             {
                 int delt_size = check_resize(inc, pbW, pbH);
-                w += delt_size; h += delt_size;
+                if (w != h)
+                    h += delt_size / 2;
+                else h += delt_size;
+                w += delt_size;
             }
-            else if (h > 10)
+            else if (h > 10 && w > 10)
             {
-                w -= 10; h -= 10;
+                if (w != h)
+                {
+                    w -= 10; h -= 5;
+                }
+                else { w -= 10; h -= 10; }
             }
         }
     };
@@ -156,7 +163,7 @@ namespace Lab6_OOP
         }
         public override bool mouseClick_on_Object(int x_, int y_)
         {
-            if ((x_ - x)*(x_ - x)* (h * h)+ (y_ - y) * (y_ - y) *(w*w)<=(w*w*h*h)/4)
+            if (((x_ - x)*(x_ - x)* (h * h)+ (y_ - y) * (y_ - y) *(w * w))*4 <= w * w * h * h )
                 return true;
             else return false;
         }
@@ -179,27 +186,23 @@ namespace Lab6_OOP
             return new CCircle(x, y, color);
         }
     };
-
-    public class CTriangle : СObject
+    public class CTriangle : CSquare
     {
-        private int l = 25;
-        public CTriangle(int x, int y, Color col)
-        {
-            this.x = x;
-            this.y = y;
-            color = col;
-        }
+        public CTriangle(int x, int y, Color color) : base(x, y, color) { }
+
         public override void draw(PaintEventArgs e)
         {
             Brush.normBrush.Color = color;
-            Point[] arrPoints = { new Point(x, y - l), new Point(x + l, y + l), new Point(x - l, y + l) };
+            Point[] arrPoints = { new Point(x, y - w/2), new Point(x + w/2, y + w/2), new Point(x - w/2, y + w/2) };
             if (highlighted == false)
                 e.Graphics.FillPolygon(Brush.normBrush, arrPoints);
             else e.Graphics.FillPolygon(Brush.highlightBrush, arrPoints);
         }
         public override bool mouseClick_on_Object(int x_, int y_)
         {
-            if (x >= (x_ - l) && x <= (x_ + l) && y >= (y_ - l) && y <= (y_ + l))
+            int dy = y_ - y;
+            int dx = x_ - x;
+            if (dy <= w / 2 && dy >= 2 * dx - w / 2 && dy >= -2 * dx - w / 2)
                 return true;
             else return false;
         }
@@ -208,38 +211,57 @@ namespace Lab6_OOP
         {
             return new CTriangle(x, y, color);
         }
+    };
+    class CRhomb: CRectangle
+    {
+        public CRhomb(int x, int y, Color color):base(x, y, color)
+        {
+            h = 70; w = 35;
+        }
+        public override void draw(PaintEventArgs e)
+        {
+            Brush.normBrush.Color = color;
+            Point[] arrPoints = { new Point(x - w / 2, y), new Point(x, y - h / 2), new Point(x + w / 2, y) };
+            Point[] arrPoints2 = { new Point(x - w / 2, y), new Point(x, y + h / 2), new Point(x + w / 2, y) };
+            if (highlighted == false)
+            {
+                e.Graphics.FillPolygon(Brush.normBrush, arrPoints);
+                e.Graphics.FillPolygon(Brush.normBrush, arrPoints2);
+            }
+            else
+            {
+                e.Graphics.FillPolygon(Brush.highlightBrush, arrPoints);
+                e.Graphics.FillPolygon(Brush.highlightBrush, arrPoints2);
+            }
+        }
+        public override bool mouseClick_on_Object(int x_, int y_)
+        {
+            int dy = y_ - y;
+            int dx = x_ - x;
+            if (dy >= 2 * dx - h / 2 && dy >= -2 * dx - h / 2 && dy <= 2 * dx + h / 2 && dy <= -2 * dx + h / 2)
+                return true;
+            else return false;
+        }
         public override void resize(bool inc, int pbW, int pbH)
         {
             if (inc == true)
-                l += 10;
-            else if (l > 5) l -= 10;
-        }
-        protected override bool check_move(int move, int pbW, int pbH)
-        {
-            switch (move)
             {
-                case 1:
-                    {
-                        if (x + l + 10 > pbW) x = pbW - l;
-                        return (x + l + 10 <= pbW);
-                    }
-                case -1:
-                    {
-                        if (x - l - 10 < 0) x = l;
-                        return (x - l - 10 >= 0);
-                    }
-                case 2:
-                    {
-                        if (y - l - 10 < 0) y = l;
-                        return (y - l - 10 >= 0);
-                    }
-                case -2:
-                    {
-                        if (y + l + 10 > pbH) y = pbH - l;
-                        return (y + l + 10 <= pbH);
-                    }
-                default: return base.check_move(move, pbW, pbH);
+                int delt_size = check_resize(inc, pbW, pbH);
+                if (w != h)
+                    w += delt_size / 2;
+                else w += delt_size;
+                h += delt_size;
+            }
+            else if (h > 10)
+            {
+                w -= 5; h -= 10;
             }
         }
-    };
+        public override string classname() { return "CRhomb"; }
+        public override СObject new_obj(int x, int y, Color color)
+        {
+            return new CRhomb(x, y, color);
+        }
+    }
+
 }

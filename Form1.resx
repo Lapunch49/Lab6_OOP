@@ -6401,7 +6401,7 @@
         ABACQAgAQRAEQRA8uaL+7/8B1lZ/qjF6wsMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="button7.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="CPolygon.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAABGdBTUEAALGPC/xhBQAAEBRJREFUeF7t
         3QlclGd+B/B0q7u2zba2TVvbpu12a2t3zbGJ2ejGHCbuRhNN8EZBEUVlTWJcY4wxHlwavI1HvVCOGZAb
@@ -6475,7 +6475,7 @@
         GHpiNPYS52iqMCpUqFChQoUKFSpUqHCreOSR3wBgh5Fq8mCYtgAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="button8.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="CTrapeze.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAIAAAABmCAYAAAADI5lUAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         vAAADrwBlbxySQAACVlJREFUeF7tnXeQldUZhzG99957YkGxoaKi2BBRURSlrmjGSTKpEydlomJBUWGB
@@ -6521,7 +6521,7 @@
         DJLdr9//AH7Bt5nv/w0GAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="button9.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="CLine.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAIRJREFUWEdj
         GADAVn3k5X+PRRf/g9gQIfoBtqrDL/+7AS2369sGcoAgRJg+AMny7SDLzYGYbg5At9wWiGVA4iBJWoNR
@@ -6529,7 +6529,7 @@
         Z8sZGABl6AF+Ff71tgAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="button4.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="CRhomb.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAABGdBTUEAALGPC/xhBQAAEZRJREFUeF7t
         nQlUlWd6xzOUzqSj7djWtvY0bT21bWaiiUk0MTGdMcYkxLgQxICKiopxizEzMcZJXFBRUXHHxAUVLpdV
