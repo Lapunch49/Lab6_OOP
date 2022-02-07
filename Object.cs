@@ -156,7 +156,6 @@ namespace Lab6_OOP
         }
         public override bool mouseClick_on_Object(int x_, int y_)
         {
-            //if ((x + w / 2) >= x_ && (x - w / 2) <= x_ && (y + h / 2) >= y_ && (y - h / 2) <= y_)
             if ((x_ - x)*(x_ - x)* (h * h)+ (y_ - y) * (y_ - y) *(w*w)<=(w*w*h*h)/4)
                 return true;
             else return false;
@@ -173,64 +172,12 @@ namespace Lab6_OOP
         public CCircle(int x, int y, Color color) : base(x, y, color)
         {
             w = 50;
-            h = 50;
-            //r = h / 2;
-        }
-        //public override void draw(PaintEventArgs e)
-        //{
-        //    Brush.normBrush.Color = color;
-        //    if (highlighted == false)
-        //        e.Graphics.FillEllipse(Brush.normBrush, x - r, y - r, r * 2, r * 2);
-        //    else e.Graphics.FillEllipse(Brush.highlightBrush, x - r, y - r, r * 2, r * 2);
-        //}
-        public override bool mouseClick_on_Object(int x_, int y_)
-        {
-            if ((x_ - x) * (x_ - x) + (y_ - y) * (y_ - y) <= w * w/4)
-                return true;
-            else return false;
         }
         public override string classname() { return "CCircle"; }
         public override СObject new_obj(int x, int y, Color color)
         {
             return new CCircle(x, y, color);
         }
-        //public override void resize(bool inc, int pbW, int pbH)
-        //{
-        //    if (inc == true)
-        //        r += 10;
-        //    else if (r > 0) r -= 10;
-        //}
-        //protected override bool check_move(int move, int pbW, int pbH)
-        //{
-        //    switch (move)
-        //    {
-        //        case 1:
-        //            {
-        //                if (x + r + 10 > pbW) x = pbW - r;
-        //                return (x + r + 10 <= pbW);
-        //            }
-        //        case -1:
-        //            {
-        //                if (x - r - 10 < 0) x = r;
-        //                return (x - r - 10 >= 0);
-        //            }
-        //        case 2:
-        //            {
-        //                if (y - r - 10 < 0) y = r;
-        //                return (y - r - 10 >= 0);
-        //            }
-        //        case -2:
-        //            {
-        //                if (y + r + 10 > pbH) y = pbH - r;
-        //                return (y + r + 10 <= pbH);
-        //            }
-        //        default: return base.check_move(move, pbW, pbH);
-        //    }
-        //}
-        //protected override int check_resize(bool inc, int pbW, int pbH)
-        //{
-        //    return 0;
-        //}
     };
 
     public class CTriangle : СObject
