@@ -50,7 +50,7 @@ namespace Lab6_OOP
             {
                 for (int i = 0; i < storObj.get_count(); ++i)
                     if (storObj.get_el(i).get_highlighted() == true)
-                        storObj.get_el(i).resize(true);
+                        storObj.get_el(i).resize(true, pictureBox1.Width, pictureBox1.Height);
                 //pictureBox1.Invalidate();
             }
             // уменьшение размера объектов
@@ -58,7 +58,7 @@ namespace Lab6_OOP
             {
                 for (int i = 0; i < storObj.get_count(); ++i)
                     if (storObj.get_el(i).get_highlighted() == true)
-                        storObj.get_el(i).resize(false);
+                        storObj.get_el(i).resize(false, pictureBox1.Width, pictureBox1.Height);
                 //pictureBox1.Invalidate();
             }
 
@@ -76,8 +76,9 @@ namespace Lab6_OOP
             {
                 for (int i = 0; i < storObj.get_count(); ++i)
                     if (storObj.get_el(i).get_highlighted() == true)
-                        storObj.get_el(i).move(move);
+                        storObj.get_el(i).move(move, pictureBox1.Width, pictureBox1.Height);
             }
+
             pictureBox1.Invalidate();
             ctrlPress = e.Control;
             shiftPress = e.Shift;

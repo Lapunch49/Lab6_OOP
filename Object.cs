@@ -33,17 +33,23 @@ namespace Lab6_OOP
         {
             return new СObject();
         }
-        public virtual void resize(bool inc) { }
-        public void move(int move)
+        public virtual void resize(bool inc, int pbW, int pbH) { }
+        protected virtual bool check_move(int move, int pbW, int pbH) { return true; }
+        public void move(int move, int pbW, int pbH)
         {
-            switch (move)
-            {
-                case 1: { x += 10; break; }
-                case -1: { x -= 10; break; }
-                case 2: { y -= 10; break; }
-                case -2: { y += 10; break; }
-                default: break;
-            }
+            if (check_move(move, pbW, pbH) == true && move!=0)
+                switch (move)
+                {
+                    case 1: { x += 10; break; }
+                    case -1: { x -= 10; break; }
+                    case 2: { y -= 10; break; }
+                    case -2: { y += 10; break; }
+                    default: break;
+                }
+        }
+        protected virtual int check_resize(bool inc, int pbW, int pbH) // возвращает значение, на которое увеличится объект
+        {
+            return 10;
         }
     }
     public class CCircle : СObject
@@ -73,10 +79,29 @@ namespace Lab6_OOP
         {
             return new CCircle(x, y, color);
         }
-        public override void resize(bool inc) {
+        public override void resize(bool inc, int pbW, int pbH) {
             if (inc == true)
                 r += 10;
             else if (r>0) r -= 10;
+        }
+        protected override bool check_move(int move, int pbW, int pbH)
+        {
+            switch (move)
+            {
+                case 1: { if (x + r + 10 > pbW) x = pbW - r;
+                            return (x + r + 10 <= pbW); }
+                case -1: { if (x - r - 10 < 0) x = r;
+                            return (x - r - 10 >= 0); }
+                case 2: {if (y - r - 10 < 0) y = r; 
+                        return (y - r - 10 >= 0); }
+                case -2: { if (y + r + 10 > pbH) y = pbH - r;
+                            return (y + r + 10 <= pbH); }
+                default:  return base.check_move(move, pbW, pbH);
+            }
+        }
+        protected override int check_resize(bool inc, int pbW, int pbH)
+        {
+            return 0;
         }
     };
 
@@ -108,11 +133,38 @@ namespace Lab6_OOP
         {
             return new CTriangle(x, y, color);
         }
-        public override void resize(bool inc)
+        public override void resize(bool inc, int pbW, int pbH)
         {
             if (inc == true)
                 l += 10;
             else if (l > 5) l -= 10;
+        }
+        protected override bool check_move(int move, int pbW, int pbH)
+        {
+            switch (move)
+            {
+                case 1:
+                    {
+                        if (x + l + 10 > pbW) x = pbW - l;
+                        return (x + l + 10 <= pbW);
+                    }
+                case -1:
+                    {
+                        if (x - l - 10 < 0) x = l;
+                        return (x - l - 10 >= 0);
+                    }
+                case 2:
+                    {
+                        if (y - l - 10 < 0) y = l;
+                        return (y - l - 10 >= 0);
+                    }
+                case -2:
+                    {
+                        if (y + l + 10 > pbH) y = pbH - l;
+                        return (y + l + 10 <= pbH);
+                    }
+                default: return base.check_move(move, pbW, pbH);
+            }
         }
     };
     public class CRectangle : СObject
@@ -142,17 +194,57 @@ namespace Lab6_OOP
         {
             return new CRectangle(x, y, color);
         }
-        public override void resize(bool inc)
+        public override void resize(bool inc, int pbW, int pbH)
         {
             if (inc == true)
             {
-                w += 10; h += 10;
+                int delt_size = check_resize(inc, pbW, pbH);
+                w += delt_size; h += delt_size;
             }
             else if (h > 10)
             {
                 w -= 10; h -= 10;
             }
                
+        }
+        protected override bool check_move(int move, int pbW, int pbH)
+        {
+            switch (move)
+            {
+                case 1:
+                    {
+                        if (x + w/2 + 10 > pbW) x = pbW - w/2;
+                        return (x + w/2 + 10 <= pbW);
+                    }
+                case -1:
+                    {
+                        if (x - w/2 - 10 < 0) x = w/2;
+                        return (x - w/2 - 10 >= 0);
+                    }
+                case 2:
+                    {
+                        if (y - h/2 - 10 < 0) y = h/2;
+                        return (y - h/2 - 10 >= 0);
+                    }
+                case -2:
+                    {
+                        if (y + h/2 + 10 > pbH) y = pbH - h/2;
+                        return (y + h/2 + 10 <= pbH);
+                    }
+                default: return base.check_move(move, pbW, pbH);
+            }
+        }
+        protected override int check_resize(bool inc, int pbW, int pbH)
+        {
+            int i = 10;
+            if (inc == true)
+            {
+                if (x + w/2 + 10 > pbW) i = pbW - x - w/2;
+                if (x - w / 2 - 10 < 0 && x - w / 2 < i) i = x - w / 2;
+                if (y + h / 2 + 10 > pbH && pbH - y - h / 2<i) i = pbH - y - h / 2;
+                if (y - h / 2 - 10 < 0 && y - h / 2 < i) i = y - h / 2;
+            }    
+            return i;
         }
     };
     public class CSquare : CRectangle
