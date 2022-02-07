@@ -23,7 +23,9 @@ namespace Lab6_OOP
             new CRectangle(0,0, c),
             new CSquare(0,0, c),
             new CEllipse(0,0,c),
-            new CRhomb(0,0,c)
+            new CRhomb(0,0,c),
+            new CLine(0,0,c),
+            new CTrapeze(0,0,c)
         };
         string cur_select = "CCircle"; // текущий выбор фигуры, которая будет создаваться при нажатии на пустое место 
         public Form1()
@@ -162,6 +164,7 @@ namespace Lab6_OOP
                     storObj.get_el(i).set_color(new_color);
             // меняем текущий цвет, используемый при рисовании новых фигур
             Brush.normBrush.Color = new_color;
+            Brush.normPen.Color = new_color;
         }
 
         private void btn_other_Click(object sender, EventArgs e)
@@ -190,6 +193,8 @@ namespace Lab6_OOP
     {
         public static SolidBrush normBrush = new SolidBrush(Color.LightPink);
         public static SolidBrush highlightBrush = new SolidBrush(Color.Red);
+        public static Pen normPen = new Pen(Color.LightPink,3);
+        public static Pen highlightPen = new Pen(Color.Red,4);
     }
 }
 

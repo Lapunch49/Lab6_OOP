@@ -153,7 +153,7 @@ namespace Lab6_OOP
     }
     public class CEllipse : CRectangle
     {
-        public CEllipse(int x, int y, Color col) : base(x, y, col) { }
+        public CEllipse(int x, int y, Color color) : base(x, y, color) { }
         public override void draw(PaintEventArgs e)
         {
             Brush.normBrush.Color = color;
@@ -163,7 +163,7 @@ namespace Lab6_OOP
         }
         public override bool mouseClick_on_Object(int x_, int y_)
         {
-            if (((x_ - x)*(x_ - x)* (h * h)+ (y_ - y) * (y_ - y) *(w * w))*4 <= w * w * h * h )
+            if (((x_ - x)*(x_ - x)* (h * h)+ (y_ - y) * (y_ - y) *(w * w))*4 <= w * w * h * h && base.mouseClick_on_Object(x_,y_))
                 return true;
             else return false;
         }
@@ -212,7 +212,7 @@ namespace Lab6_OOP
             return new CTriangle(x, y, color);
         }
     };
-    class CRhomb: CRectangle
+    public class CRhomb: CRectangle
     {
         public CRhomb(int x, int y, Color color):base(x, y, color)
         {
@@ -264,4 +264,56 @@ namespace Lab6_OOP
         }
     }
 
+    public class CLine: CRectangle
+    {
+        public CLine(int x, int y, Color color) : base(x, y, color) { }
+        public override string classname() { return "CLine"; }
+        public override СObject new_obj(int x, int y, Color color)
+        {
+            return new CLine(x, y, color);
+        }
+        public override void draw(PaintEventArgs e)
+        {
+            Brush.normPen.Color = color;
+            if (highlighted == false)
+                e.Graphics.DrawLine(Brush.normPen, x - w / 2, y + h / 2, x + w / 2, y - h / 2);
+            else e.Graphics.DrawLine(Brush.highlightPen, x - w / 2, y + h / 2, x + w / 2, y - h / 2);
+        }
+        public override bool mouseClick_on_Object(int x_, int y_)
+        {
+            if ((y_-y) >= (x_-x) *(h/w)-2 && (y_ - y) <= (x_ - x) * (h / w) +2 && base.mouseClick_on_Object(x_, y_))
+                return true;
+            else return false;
+        }
+    }
+
+    public class CTrapeze: CRectangle
+    {
+        public CTrapeze(int x, int y, Color color) : base(x, y, color) { }
+        public override void draw(PaintEventArgs e)
+        {
+            Brush.normBrush.Color = color;
+            Point[] arrPoints = { new Point(x - w / 2, y+h/2), new Point(x-w/4, y - h / 2),
+                new Point(x + w / 4, y-h/2), new Point(x + w/2, y + h/2) };
+            if (highlighted == false)
+            {
+                e.Graphics.FillPolygon(Brush.normBrush, arrPoints);
+            }
+            else
+            {
+                e.Graphics.FillPolygon(Brush.highlightBrush, arrPoints);
+            }
+        }
+        public override bool mouseClick_on_Object(int x_, int y_)
+        {
+            if ( (y_-y >=-4*h/w*(x_-x)) && (y_ - y >= 4 * h / w * (x_ - x)-3*h) && base.mouseClick_on_Object(x_, y_))
+                return true;
+            else return false;
+        }
+        public override string classname() { return "CTrapeze"; }
+        public override СObject new_obj(int x, int y, Color color)
+        {
+            return new CTrapeze(x, y, color);
+        }
+    }
 }

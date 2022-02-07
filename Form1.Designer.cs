@@ -641,6 +641,7 @@ namespace Lab6_OOP
             this.CPolygon.BackColor = System.Drawing.Color.Gainsboro;
             this.CPolygon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CPolygon.BackgroundImage")));
             this.CPolygon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.CPolygon.Enabled = false;
             this.CPolygon.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.CPolygon.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.CPolygon.Location = new System.Drawing.Point(98, 109);
@@ -671,6 +672,7 @@ namespace Lab6_OOP
             this.CLine.BackColor = System.Drawing.Color.Gainsboro;
             this.CLine.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CLine.BackgroundImage")));
             this.CLine.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.CLine.Enabled = false;
             this.CLine.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.CLine.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.CLine.Location = new System.Drawing.Point(8, 109);
