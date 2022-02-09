@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
+using System.Drawing.Drawing2D;
 
 namespace Lab6_OOP
 {
@@ -17,24 +18,31 @@ namespace Lab6_OOP
         public bool shiftPress = false; // для увеличения размера (shift +)
         static Color c = Color.White;
         Storage storObj = new Storage(10);
-        СObject[] ObjList =
+        CObject[] ObjList =
             {new CCircle(0,0,c),
             new CTriangle(0,0,c),
             new CRectangle(0,0, c),
             new CSquare(0,0, c),
             new CEllipse(0,0,c),
             new CRhomb(0,0,c),
-            new CLine(0,0,c),
             new CTrapeze(0,0,c)
         };
         string cur_select = "CCircle"; // текущий выбор фигуры, которая будет создаваться при нажатии на пустое место 
+        CObject line_st = null; // точка - начало отрезка
+        public Pen normPen = new Pen(Color.LightPink, 3);
         public Form1()
             {
                 InitializeComponent();
                 this.KeyPreview = true;
+            // меняю оформление концов pen для рисовании отрезков
+            Brush.normPen.EndCap = LineCap.RoundAnchor;
+            Brush.normPen.StartCap = LineCap.RoundAnchor;
+            Brush.highlightPen.EndCap = LineCap.RoundAnchor;
+            Brush.highlightPen.StartCap = LineCap.RoundAnchor;
         }
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
+            // удаление объектов
             if (e.KeyCode == Keys.Delete) // выделенные объекты удалятся из хранилища, и произойдет перерисовка
             {
                 for (int i = 0; i < storObj.get_count(); ++i)
@@ -104,7 +112,7 @@ namespace Lab6_OOP
         {
             if (e.Button == MouseButtons.Left)
             {
-                int ind = -1; // попадание по кругу с индексом ind
+                int ind = -1; // попадание по объекту с индексом ind
 
                 // определяем попадание по существующему объекту 
                 for (int i = 0; i < storObj.get_count(); ++i)
@@ -118,24 +126,46 @@ namespace Lab6_OOP
                     setAllHighlightFalse();
 
                     // создаем новый объект
-                    СObject newObj = createObj();
-                    newObj = newObj.new_obj(e.X, e.Y,Brush.normBrush.Color);
-                    storObj.add(newObj);
+                    // если нов. об. не линия и не многоугольник
+                    if (cur_select != "CLine" && cur_select != "CPolygon")
+                    {
+                        CObject newObj = createObj();
+                        newObj = newObj.new_obj(e.X, e.Y, Brush.normBrush.Color);
+                        storObj.add(newObj);
 
-                    //считаем, что мы попали по нему
-                    ind = storObj.get_count()-1;
+                        //считаем, что мы попали по нему
+                        ind = storObj.get_count() - 1;
+                    }
+                    else if (cur_select == "CLine")
+                        if (line_st == null)
+                        {
+                            line_st = new CObject(e.X, e.Y,Brush.normPen.Color);
+                        }
+                        else
+                        {
+                            CObject newObj = new CLine(line_st, e.X, e.Y, Brush.normPen.Color);
+                            line_st = null;
+                            storObj.add(newObj);
+                            ind = ind = storObj.get_count() - 1;
+                        }
                 }
                 else
                 {
-                    // попали по сущ-му объекту - проверяем ctrl
+                    // попали по сущ-му объекту
+                    // дорисовываем отрезок, если 1 точка отрезка уже есть 
+                    if (cur_select == "CLine"&& line_st != null)
+                        line_st = new CObject(e.X, e.Y, Brush.normPen.Color);
+
+                    //если не дорисовываем отрезок, проверяем ctrl
                     // если ctrl не зажат - убираем остальные выделения
-                    if (ctrlPress != true)
+                    else if (ctrlPress != true)
                     {
                         setAllHighlightFalse();
                     }
                 }
-                // выделяем круг, по которому попали
-                storObj.get_el(ind).change_highlight();
+                // выделяем объект, по которому попали
+                if (ind != -1)
+                    storObj.get_el(ind).change_highlight();
                 pictureBox1.Invalidate();
             }
         }
@@ -144,8 +174,12 @@ namespace Lab6_OOP
             for (int i = 0; i < storObj.get_count(); ++i)
                 if (storObj.get_el(i) != null)
                     storObj.get_el(i).draw(e);
+            // рисуем начало отрезка, если оно есть 
+            if (line_st != null)
+                line_st.draw(e);
+            Brush.normPen.Color = Brush.normBrush.Color;
         }
-        private СObject createObj()
+        private CObject createObj()
         {
             for (int i=0; i < ObjList.Length; ++i)
             {
@@ -189,7 +223,7 @@ namespace Lab6_OOP
             pictureBox1.Invalidate();
         }
     }
-    public static class Brush
+    public class Brush
     {
         public static SolidBrush normBrush = new SolidBrush(Color.LightPink);
         public static SolidBrush highlightBrush = new SolidBrush(Color.Red);

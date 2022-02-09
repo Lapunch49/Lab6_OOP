@@ -3,16 +3,24 @@ using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Drawing.Drawing2D;
 
 namespace Lab6_OOP
 {
-    public class СObject
+    public class CObject
     {
         protected bool highlighted = false;
         protected Color color;
         protected int x, y;
-        public СObject() { }
-        public virtual void draw(PaintEventArgs e) { }
+        public CObject() { }
+        public CObject(int x, int y, Color color) {
+            this.x = x;
+            this.y = y;
+            this.color = color;
+        }
+        public virtual void draw(PaintEventArgs e) {
+            e.Graphics.DrawLine(Brush.highlightPen, x, y, x, y);
+        }
         public virtual bool mouseClick_on_Object(int x_, int y_) { return false; }
         public void change_highlight()
         {
@@ -29,9 +37,9 @@ namespace Lab6_OOP
             color = new_color;
         }
         public virtual string classname() { return "Cbject"; }
-        public virtual СObject new_obj(int x, int y, Color c)
+        public virtual CObject new_obj(int x, int y, Color c)
         {
-            return new СObject();
+            return new CObject();
         }
         public virtual void resize(bool inc, int pbW, int pbH) { }
         protected virtual bool check_move(int move, int pbW, int pbH) { return true; }
@@ -51,9 +59,17 @@ namespace Lab6_OOP
         {
             return 10;
         }
+        public int get_x()
+        {
+            return x;
+        }
+        public int get_y()
+        {
+            return y;
+        }
     }
 
-    public class CRectangle : СObject
+    public class CRectangle : CObject
     {
         protected int h = 50, w = 70;
         public CRectangle(int x, int y, Color col)
@@ -76,7 +92,7 @@ namespace Lab6_OOP
             else return false;
         }
         public override string classname() { return "CRectangle"; }
-        public override СObject new_obj(int x, int y, Color color)
+        public override CObject new_obj(int x, int y, Color color)
         {
             return new CRectangle(x, y, color);
         }
@@ -146,7 +162,7 @@ namespace Lab6_OOP
             w = 50;
         }
         public override string classname() { return "CSquare"; }
-        public override СObject new_obj(int x, int y, Color color)
+        public override CObject new_obj(int x, int y, Color color)
         {
             return new CSquare(x, y, color);
         }
@@ -168,7 +184,7 @@ namespace Lab6_OOP
             else return false;
         }
         public override string classname() { return "CEllipse"; }
-        public override СObject new_obj(int x, int y, Color color)
+        public override CObject new_obj(int x, int y, Color color)
         {
             return new CEllipse(x, y, color);
         }
@@ -181,7 +197,7 @@ namespace Lab6_OOP
             w = 50;
         }
         public override string classname() { return "CCircle"; }
-        public override СObject new_obj(int x, int y, Color color)
+        public override CObject new_obj(int x, int y, Color color)
         {
             return new CCircle(x, y, color);
         }
@@ -207,7 +223,7 @@ namespace Lab6_OOP
             else return false;
         }
         public override string classname() { return "CTriangle"; }
-        public override СObject new_obj(int x, int y, Color color)
+        public override CObject new_obj(int x, int y, Color color)
         {
             return new CTriangle(x, y, color);
         }
@@ -258,32 +274,43 @@ namespace Lab6_OOP
             }
         }
         public override string classname() { return "CRhomb"; }
-        public override СObject new_obj(int x, int y, Color color)
+        public override CObject new_obj(int x, int y, Color color)
         {
             return new CRhomb(x, y, color);
         }
     }
 
-    public class CLine: CRectangle
+    public class CLine: CObject
     {
-        public CLine(int x, int y, Color color) : base(x, y, color) { }
-        public override string classname() { return "CLine"; }
-        public override СObject new_obj(int x, int y, Color color)
-        {
-            return new CLine(x, y, color);
+        private CObject Point1;
+        public CLine(CObject point_st, int x, int y, Color color) : base(x, y, color) {
+            Point1 = point_st;
+            Point1.set_color(color);
+
         }
+        public override string classname() { return "CLine"; }
         public override void draw(PaintEventArgs e)
         {
             Brush.normPen.Color = color;
             if (highlighted == false)
-                e.Graphics.DrawLine(Brush.normPen, x - w / 2, y + h / 2, x + w / 2, y - h / 2);
-            else e.Graphics.DrawLine(Brush.highlightPen, x - w / 2, y + h / 2, x + w / 2, y - h / 2);
+                e.Graphics.DrawLine(Brush.normPen, Point1.get_x(), Point1.get_y(), x, y );
+            else e.Graphics.DrawLine(Brush.highlightPen, Point1.get_x(), Point1.get_y(), x, y);
         }
         public override bool mouseClick_on_Object(int x_, int y_)
         {
-            if ((y_-y) >= (x_-x) *(h/w)-2 && (y_ - y) <= (x_ - x) * (h / w) +2 && base.mouseClick_on_Object(x_, y_))
-                return true;
-            else return false;
+            int x1 = Point1.get_x();
+            int y1 = Point1.get_y();
+            System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
+            path.AddPolygon(new Point[]{new Point(x1+2,y1-2), new Point(x1-2, y1+2), new Point(x-2, y+2), new Point(x+2, y-2) });
+            Region rgn = new Region(path);
+
+            return (rgn.IsVisible(x_, y_) == true);
+            //float a = (y1 - y) / (x1 - x);
+            //float b = y - a * x;
+            //if (y_>=a*x_+ b-5 && y_ <=a*x+b+5 && x_>=Math.Min(x, x1) && x_ <=Math.Max(x, x1) &&
+            //    y_>=Math.Min(y, y1) && y_ <= Math.Max(y, y1))
+            //    return true;
+            //else return false;
         }
     }
 
@@ -311,7 +338,7 @@ namespace Lab6_OOP
             else return false;
         }
         public override string classname() { return "CTrapeze"; }
-        public override СObject new_obj(int x, int y, Color color)
+        public override CObject new_obj(int x, int y, Color color)
         {
             return new CTrapeze(x, y, color);
         }

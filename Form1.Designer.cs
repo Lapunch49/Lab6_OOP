@@ -672,7 +672,6 @@ namespace Lab6_OOP
             this.CLine.BackColor = System.Drawing.Color.Gainsboro;
             this.CLine.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CLine.BackgroundImage")));
             this.CLine.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.CLine.Enabled = false;
             this.CLine.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.CLine.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.CLine.Location = new System.Drawing.Point(8, 109);
