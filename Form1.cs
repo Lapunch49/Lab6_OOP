@@ -29,7 +29,8 @@ namespace Lab6_OOP
         };
         string cur_select = "CCircle"; // текущий выбор фигуры, которая будет создаваться при нажатии на пустое место 
         CObject line_st = null; // точка - начало отрезка
-        public Pen normPen = new Pen(Color.LightPink, 3);
+        public int mouseX = 0;
+        public int mouseY = 0;
         public Form1()
             {
                 InitializeComponent();
@@ -146,15 +147,20 @@ namespace Lab6_OOP
                             CObject newObj = new CLine(line_st, e.X, e.Y, Brush.normPen.Color);
                             line_st = null;
                             storObj.add(newObj);
-                            ind = ind = storObj.get_count() - 1;
+                            ind = storObj.get_count() - 1;
                         }
                 }
                 else
                 {
                     // попали по сущ-му объекту
                     // дорисовываем отрезок, если 1 точка отрезка уже есть 
-                    if (cur_select == "CLine"&& line_st != null)
-                        line_st = new CObject(e.X, e.Y, Brush.normPen.Color);
+                    if (cur_select == "CLine" && line_st != null)
+                    {
+                        CObject newObj = new CLine(line_st, e.X, e.Y, Brush.normPen.Color);
+                        line_st = null;
+                        storObj.add(newObj);
+                        ind = storObj.get_count() - 1;
+                    }
 
                     //если не дорисовываем отрезок, проверяем ctrl
                     // если ctrl не зажат - убираем остальные выделения
@@ -175,10 +181,12 @@ namespace Lab6_OOP
                 if (storObj.get_el(i) != null)
                     storObj.get_el(i).draw(e);
             // рисуем начало отрезка, если оно есть 
-            if (line_st != null)
-                line_st.draw(e);
+            if (line_st != null && cur_select == "CLine")
+                e.Graphics.DrawLine(Brush.normPen, line_st.get_x(), line_st.get_y(), mouseX, mouseY);
+                //line_st.draw(e);
             Brush.normPen.Color = Brush.normBrush.Color;
         }
+
         private CObject createObj()
         {
             for (int i=0; i < ObjList.Length; ++i)
@@ -199,18 +207,23 @@ namespace Lab6_OOP
             // меняем текущий цвет, используемый при рисовании новых фигур
             Brush.normBrush.Color = new_color;
             Brush.normPen.Color = new_color;
+            // для отрезка
+            if (line_st != null)
+                line_st.set_color(new_color);
         }
 
         private void btn_other_Click(object sender, EventArgs e)
         {
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
-                Brush.normBrush.Color = colorDialog1.Color;
+                btn_other.BackColor = colorDialog1.Color;
+                btn_color_Click(btn_other, e);
             }
         }
         private void btn_shape_Click(object sender, EventArgs e)
         {
             cur_select = ((Button)sender).Name.ToString();
+            line_st = null;
         }
 
         private void btn_clear_Click(object sender, EventArgs e)
@@ -221,6 +234,14 @@ namespace Lab6_OOP
                 i--;
             }
             pictureBox1.Invalidate();
+        }
+
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            mouseX = e.X;
+            mouseY = e.Y;
+            if (cur_select == "CLine" && line_st != null)
+                pictureBox1.Invalidate();
         }
     }
     public class Brush
