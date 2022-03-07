@@ -13,13 +13,15 @@ namespace Lab6_OOP
         protected Color color;
         protected int x, y;
         public CObject() { }
-        public CObject(int x, int y, Color color) {
+        public CObject(int x, int y, Color color)
+        {
             this.x = x;
             this.y = y;
             this.color = color;
         }
-        public virtual void draw(PaintEventArgs e) {
-            e.Graphics.DrawLine(Brush.highlightPen, x, y, x+1, y+1);
+        public virtual void draw(PaintEventArgs e)
+        {
+            e.Graphics.DrawLine(Brush.highlightPen, x, y, x + 1, y + 1);
         }
         public virtual bool mouseClick_on_Object(int x_, int y_) { return false; }
         public void change_highlight()
@@ -42,7 +44,8 @@ namespace Lab6_OOP
             return new CObject();
         }
         public virtual void resize(bool inc, int pbW, int pbH) { }
-        public virtual bool check_move(int move, int pbW, int pbH) {
+        public virtual bool check_move(int move, int pbW, int pbH)
+        {
             switch (move)
             {
                 case 1:
@@ -62,7 +65,7 @@ namespace Lab6_OOP
                     }
                 case -2:
                     {
-                        if (y  + 10 > pbH) y = pbH;
+                        if (y + 10 > pbH) y = pbH;
                         return (y + 10 <= pbH);
                     }
                 default: return false;
@@ -72,8 +75,8 @@ namespace Lab6_OOP
         {
             switch (move)
             {
-                case 1:return Math.Min(pbW-x, d);
-                case -1: return Math.Min(x,d);
+                case 1: return Math.Min(pbW - x, d);
+                case -1: return Math.Min(x, d);
                 case 2: return Math.Min(y, d);
                 case -2: return Math.Min(pbH - y, d);
                 default: return 0;
@@ -109,7 +112,15 @@ namespace Lab6_OOP
         }
         public void set_y(int new_y)
         {
-            y += new_y;
+            y = new_y;
+        }
+        public void move_x(int dx) // переделать 
+        {
+            x += dx;
+        }
+        public void move_y(int dy)
+        {
+            y += dy;
         }
     }
 
@@ -178,7 +189,7 @@ namespace Lab6_OOP
                 if (y - h / 2 - 10 < 0 && y - h / 2 < i) i = y - h / 2;
             }
             return i;
-        }        
+        }
         public override void resize(bool inc, int pbW, int pbH)
         {
             if (inc == true)
@@ -225,7 +236,7 @@ namespace Lab6_OOP
         }
         public override bool mouseClick_on_Object(int x_, int y_)
         {
-            if (((x_ - x)*(x_ - x)* (h * h)+ (y_ - y) * (y_ - y) *(w * w))*4 <= w * w * h * h && base.mouseClick_on_Object(x_,y_))
+            if (((x_ - x) * (x_ - x) * (h * h) + (y_ - y) * (y_ - y) * (w * w)) * 4 <= w * w * h * h && base.mouseClick_on_Object(x_, y_))
                 return true;
             else return false;
         }
@@ -237,7 +248,6 @@ namespace Lab6_OOP
     }
     public class CCircle : CEllipse
     {
-        private int r;
         public CCircle(int x, int y, Color color) : base(x, y, color)
         {
             w = 50;
@@ -255,7 +265,7 @@ namespace Lab6_OOP
         public override void draw(PaintEventArgs e)
         {
             Brush.normBrush.Color = color;
-            Point[] arrPoints = { new Point(x, y - w/2), new Point(x + w/2, y + w/2), new Point(x - w/2, y + w/2) };
+            Point[] arrPoints = { new Point(x, y - w / 2), new Point(x + w / 2, y + w / 2), new Point(x - w / 2, y + w / 2) };
             if (highlighted == false)
                 e.Graphics.FillPolygon(Brush.normBrush, arrPoints);
             else e.Graphics.FillPolygon(Brush.highlightBrush, arrPoints);
@@ -274,9 +284,9 @@ namespace Lab6_OOP
             return new CTriangle(x, y, color);
         }
     };
-    public class CRhomb: CRectangle
+    public class CRhomb : CRectangle
     {
-        public CRhomb(int x, int y, Color color):base(x, y, color)
+        public CRhomb(int x, int y, Color color) : base(x, y, color)
         {
             h = 70; w = 35;
         }
@@ -318,10 +328,45 @@ namespace Lab6_OOP
         }
     }
 
-    public class CLine: CObject
+    public class CTrapeze : CRectangle
+    {
+        public CTrapeze(int x, int y, Color color) : base(x, y, color) { }
+        Point[] get_arrPoints()
+        {
+            return new Point[] {
+                new Point(x - w / 2, y + h / 2), new Point(x - w / 4, y - h / 2),
+                new Point(x + w / 4, y - h / 2), new Point(x + w / 2, y + h / 2) };
+        }
+        public override void draw(PaintEventArgs e)
+        {
+            Brush.normBrush.Color = color;
+            if (highlighted == false)
+            {
+                e.Graphics.FillPolygon(Brush.normBrush, get_arrPoints());
+            }
+            else
+            {
+                e.Graphics.FillPolygon(Brush.highlightBrush, get_arrPoints());
+            }
+        }
+        public override bool mouseClick_on_Object(int x_, int y_)
+        {
+            System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
+            path.AddPolygon(get_arrPoints());
+            Region rgn = new Region(path);
+            return (rgn.IsVisible(x_, y_) == true);
+        }
+        public override string classname() { return "CTrapeze"; }
+        public override CObject new_obj(int x, int y, Color color)
+        {
+            return new CTrapeze(x, y, color);
+        }
+    }
+    public class CLine : CObject
     {
         private CObject Point1;
-        public CLine(CObject point_st, int x, int y, Color color) : base(x, y, color) {
+        public CLine(CObject point_st, int x, int y, Color color) : base(x, y, color)
+        {
             Point1 = point_st;
             Point1.set_color(color);
         }
@@ -330,7 +375,7 @@ namespace Lab6_OOP
         {
             Brush.normPen.Color = color;
             if (highlighted == false)
-                e.Graphics.DrawLine(Brush.normPen, Point1.get_x(), Point1.get_y(), x, y );
+                e.Graphics.DrawLine(Brush.normPen, Point1.get_x(), Point1.get_y(), x, y);
             else e.Graphics.DrawLine(Brush.highlightPen, Point1.get_x(), Point1.get_y(), x, y);
         }
         public override bool mouseClick_on_Object(int x_, int y_)
@@ -338,7 +383,7 @@ namespace Lab6_OOP
             int x1 = Point1.get_x();
             int y1 = Point1.get_y();
             System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
-            path.AddPolygon(new Point[]{new Point(x1+2,y1-2), new Point(x1-2, y1+2), new Point(x-2, y+2), new Point(x+2, y-2) });
+            path.AddPolygon(new Point[] { new Point(x1 + 2, y1 - 2), new Point(x1 - 2, y1 + 2), new Point(x - 2, y + 2), new Point(x + 2, y - 2) });
             Region rgn = new Region(path);
             return (rgn.IsVisible(x_, y_) == true);
         }
@@ -346,22 +391,22 @@ namespace Lab6_OOP
         {
             int d = check_move2(move, pbW, pbH, 10);
             int d1 = Point1.check_move2(move, pbW, pbH, 10);
-            if (d >= 0 && d1>=0)
+            if (d >= 0 && d1 >= 0)
             {
                 int d_ = Math.Min(d, d1);
                 switch (move)
                 {
-                    case 1: { x += d_; Point1.set_x(d_); break; }
-                    case -1: { x -= d_; Point1.set_x(-d_); break; }
-                    case 2: { y -= d_; Point1.set_y(-d_); break; }
-                    case -2: { y += d_; Point1.set_y(d_); break; }
+                    case 1: { x += d_; Point1.move_x(d_); break; }
+                    case -1: { x -= d_; Point1.move_x(-d_); break; }
+                    case 2: { y -= d_; Point1.move_y(-d_); break; }
+                    case -2: { y += d_; Point1.move_y(d_); break; }
                     default: break;
                 }
             }
         }
         protected override int check_resize(bool inc, int pbW, int pbH)
-        { 
-            if (x==0 || Point1.get_x() == 0 || x==pbW || Point1.get_x() == pbW 
+        {
+            if (x == 0 || Point1.get_x() == 0 || x == pbW || Point1.get_x() == pbW
                 || y == 0 || Point1.get_y() == 0 || y == pbH || Point1.get_y() == pbH)
                 return 0;
             else return 1;
@@ -424,44 +469,7 @@ namespace Lab6_OOP
                 else { x = rect.Right; Point1.set_x(rect.X); }
                 if (y == y0) { y = rect.Y; Point1.set_y(rect.Bottom); }
                 else { y = rect.Bottom; Point1.set_y(rect.Y); }
-
             }
-        }
-
-    }
-
-    public class CTrapeze: CRectangle
-    {
-        public CTrapeze(int x, int y, Color color) : base(x, y, color) { }
-        Point[] get_arrPoints()
-        {
-            return new Point[] {
-                new Point(x - w / 2, y + h / 2), new Point(x - w / 4, y - h / 2),
-                new Point(x + w / 4, y - h / 2), new Point(x + w / 2, y + h / 2) };
-        }
-        public override void draw(PaintEventArgs e)
-        {
-            Brush.normBrush.Color = color;
-            if (highlighted == false)
-            {
-                e.Graphics.FillPolygon(Brush.normBrush, get_arrPoints());
-            }
-            else
-            {
-                e.Graphics.FillPolygon(Brush.highlightBrush, get_arrPoints());
-            }
-        }
-        public override bool mouseClick_on_Object(int x_, int y_)
-        {
-            System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
-            path.AddPolygon(get_arrPoints());
-            Region rgn = new Region(path);
-            return (rgn.IsVisible(x_, y_) == true);
-        }
-        public override string classname() { return "CTrapeze"; }
-        public override CObject new_obj(int x, int y, Color color)
-        {
-            return new CTrapeze(x, y, color);
         }
     }
 }

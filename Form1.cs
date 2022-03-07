@@ -32,9 +32,9 @@ namespace Lab6_OOP
         public int mouseX = 0;
         public int mouseY = 0;
         public Form1()
-            {
-                InitializeComponent();
-                this.KeyPreview = true;
+        {
+            InitializeComponent();
+            this.KeyPreview = true;
             // меняю оформление концов pen для рисовании отрезков
             Brush.normPen.EndCap = LineCap.RoundAnchor;
             Brush.normPen.StartCap = LineCap.RoundAnchor;
@@ -66,7 +66,7 @@ namespace Lab6_OOP
                 size_delt = true;
             }
             // уменьшение размера объектов
-            if (e.KeyCode == Keys.OemMinus) 
+            if (e.KeyCode == Keys.OemMinus)
                 changeSize = true;
             // применяем изменения к объектам
             if (changeSize == true)
@@ -78,7 +78,7 @@ namespace Lab6_OOP
             int move = 0;
             switch (e.KeyCode)
             {
-                case Keys.Left : { move = -1; break; }
+                case Keys.Left: { move = -1; break; }
                 case Keys.Right: { move = 1; break; }
                 case Keys.Up: { move = 2; break; }
                 case Keys.Down: { move = -2; break; }
@@ -102,7 +102,7 @@ namespace Lab6_OOP
             ctrlPress = e.Control;
             shiftPress = e.Shift;
         }
-        private void setAllHighlightFalse() 
+        private void setAllHighlightFalse()
         {
             // в хранилище меняем у выделенных объектов св. выделенности
             for (int i = 0; i < storObj.get_count(); ++i)
@@ -140,7 +140,7 @@ namespace Lab6_OOP
                     else if (cur_select == "CLine")
                         if (line_st == null)
                         {
-                            line_st = new CObject(e.X, e.Y,Brush.normPen.Color);
+                            line_st = new CObject(e.X, e.Y, Brush.normPen.Color);
                         }
                         else
                         {
@@ -180,23 +180,23 @@ namespace Lab6_OOP
             for (int i = 0; i < storObj.get_count(); ++i)
                 if (storObj.get_el(i) != null)
                     storObj.get_el(i).draw(e);
+            // возвращаем цвет кистям
+            Brush.normBrush.Color = Brush.Color;
+            Brush.normPen.Color = Brush.Color;
             // рисуем начало отрезка, если оно есть 
-            if (line_st != null && cur_select == "CLine")
+            if (line_st != null)
                 e.Graphics.DrawLine(Brush.normPen, line_st.get_x(), line_st.get_y(), mouseX, mouseY);
-                //line_st.draw(e);
-            Brush.normPen.Color = Brush.normBrush.Color;
+            //line_st.draw(e);
         }
-
         private CObject createObj()
         {
-            for (int i=0; i < ObjList.Length; ++i)
+            for (int i = 0; i < ObjList.Length; ++i)
             {
                 if (ObjList[i].classname() == cur_select)
                     return ObjList[i];
             }
-            return new CCircle(0,0,c);
+            return new CCircle(0, 0, c);
         }
-
         private void btn_color_Click(object sender, EventArgs e)
         {
             Color new_color = ((Button)sender).BackColor;
@@ -205,6 +205,7 @@ namespace Lab6_OOP
                 if (storObj.get_el(i).get_highlighted() == true)
                     storObj.get_el(i).set_color(new_color);
             // меняем текущий цвет, используемый при рисовании новых фигур
+            Brush.Color = new_color;
             Brush.normBrush.Color = new_color;
             Brush.normPen.Color = new_color;
             // для отрезка
@@ -225,7 +226,6 @@ namespace Lab6_OOP
             cur_select = ((Button)sender).Name.ToString();
             line_st = null;
         }
-
         private void btn_clear_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < storObj.get_count(); ++i)
@@ -235,7 +235,6 @@ namespace Lab6_OOP
             }
             pictureBox1.Invalidate();
         }
-
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
             mouseX = e.X;
@@ -248,12 +247,8 @@ namespace Lab6_OOP
     {
         public static SolidBrush normBrush = new SolidBrush(Color.LightPink);
         public static SolidBrush highlightBrush = new SolidBrush(Color.Red);
-        public static Pen normPen = new Pen(Color.LightPink,3);
-        public static Pen highlightPen = new Pen(Color.Red,4);
+        public static Pen normPen = new Pen(Color.LightPink, 3);
+        public static Pen highlightPen = new Pen(Color.Red, 4);
+        public static Color Color = Color.LightPink;
     }
 }
-
-
-
-
-
