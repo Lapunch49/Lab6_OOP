@@ -236,7 +236,10 @@ namespace Lab6_OOP
         }
         public override bool mouseClick_on_Object(int x_, int y_)
         {
-            if (((x_ - x) * (x_ - x) * (h * h) + (y_ - y) * (y_ - y) * (w * w)) * 4 <= w * w * h * h && base.mouseClick_on_Object(x_, y_))
+            GraphicsPath path = new GraphicsPath();
+            path.AddEllipse(x-w/2, y-h/2, w, h);
+            Region rgn = new Region(path);
+            if (rgn.IsVisible(x_, y_)) 
                 return true;
             else return false;
         }
@@ -413,63 +416,98 @@ namespace Lab6_OOP
         }
         public override void resize(bool inc, int pbW, int pbH)
         {
-            //if (x >= Point1.get_x()) {
-            //    int d = check_move2(1, pbW, pbH, 5);
-            //    int d1 = Point1.check_move2(-1, pbW, pbH, 5);
-            //}
-            //else
-            //{
-            //    int d = check_move2(-1, pbW, pbH, 5);
-            //    int d1 = Point1.check_move2(1, pbW, pbH, 5);
-            //}
-            ////int d1 = Point1.check_move2(move, pbW, pbH, 5);
-            //if (d >= 0 && d1 >= 0)
-            //{
-            //    int d_ = Math.Min(d, d1);
-            //    switch (move)
-            //    {
-            //        case 1: { x += d_; Point1.set_x(d_); break; }
-            //        case -1: { x -= d_; Point1.set_x(-d_); break; }
-            //        case 2: { y -= d_; Point1.set_y(-d_); break; }
-            //        case -2: { y += d_; Point1.set_y(d_); break; }
-            //        default: break;
-            //    }
-            //}
-            if (inc == true && check_resize(inc, pbW, pbH) == 1)
+            // для простоты представляем отрезок диагональю прямоугольника, который хотим увеличить
+            // его параметры:
+            int w = Math.Abs(x - Point1.get_x());
+            int h = Math.Abs(y - Point1.get_y());
+            int x0 = Math.Min(x, Point1.get_x());
+            int y0 = Math.Min(y, Point1.get_y());
+            Rectangle rect = new Rectangle(x0, y0, w, h);
+            // пропорционально "увеличиваем" или "уменьшаем" прямоугольник
+            Size inflateSize = new Size();
+            if (inc == true && check_resize(inc, pbW, pbH) == 1) // увеличение
             {
-                // для простоты представляем отрезок диагональю прямоугольника, который хотим увеличить 
-                //int w = Math.Abs(x - Point1.get_x());
-                //int h = Math.Abs(y - Point1.get_y());
-                //int x0 = Math.Min(x, Point1.get_x());
-                //int y0 = Math.Min(y, Point1.get_y());
-                //// находим возможное на поле смещение точек dh и dw
-                //int dw, dh;
-                //if (x0 + w + 10 <= pbW) dw = 10;
-                //else dw = pbW - w;
-                //float d10 = (float)10 * h / ((float)w); // для пропорционального увел-ия прям-ка
-                //if (y0 - d10 >= 0) dh = (int)d10;
-                //else dh = (y0);
-                //if (x0 - dw < 0) dw = x0;
-                //if (y0 + h + dh >= pbH) dh = pbH - y0 - h;
-                //// присваиваем новые координаты точкам
-                //if (x == x0) { x -= dw; Point1.set_x(dw); }
-                //else { x += dw; Point1.set_x(-dw); }
-                //if (y == y0) { y -= dh; Point1.set_y(dh); }
-                //else { y += dh; Point1.set_y(-dh); }
-
-                int w = Math.Abs(x - Point1.get_x());
-                int h = Math.Abs(y - Point1.get_y());
-                int x0 = Math.Min(x, Point1.get_x());
-                int y0 = Math.Min(y, Point1.get_y());
-                Rectangle rect = new Rectangle(x0, y0, w, h);
-                //rect.Inflate(10, (int)(10 * h / (float)w));
-                Size inflateSize = new Size(50, 50);
-                rect.Inflate(inflateSize);
-                if (x == x0) { x = rect.X; Point1.set_x(rect.Right); }
-                else { x = rect.Right; Point1.set_x(rect.X); }
-                if (y == y0) { y = rect.Y; Point1.set_y(rect.Bottom); }
-                else { y = rect.Bottom; Point1.set_y(rect.Y); }
+                int d; // на сколько увеличим по x
+                // находим допустимое увеличение по x и по y
+                int dx = 40;
+                if (x0 + w + dx > pbW) dx = pbW - x0 - w;
+                if (x0 - dx < 0) dx = x0;
+                int dy = 40; 
+                if (y0 + h + dy > pbH) dy = pbH - y0 - h;
+                if (y0 - h < 0) dy = y0;
+                d = Math.Min(dx, dy);
+                // увеличиваем прям-к
+                if (h < w){inflateSize = new Size(d, d * h/w);}
+                else {inflateSize = new Size(d * w/h, d); }
+                }
+            else if (inc == false) // уменьшение
+            {
+                if (Math.Max(h,w)>45)
+                    if (h < w ) { inflateSize = new Size(-40, -40 * h / w); }
+                    else { inflateSize = new Size(-40 * w / h, -40); }
             }
+            rect.Inflate(inflateSize);
+            // присваиваем новые значения координатам нашего отрезка
+            if (x == x0) { x = Math.Max(0, rect.X); Point1.set_x(Math.Min(pbW, rect.Right)); }
+            else { x = Math.Min(pbW, rect.Right); Point1.set_x(Math.Max(0, rect.X)); }
+            if (y == y0) { y = Math.Max(0, rect.Y); Point1.set_y(Math.Min(pbH, rect.Bottom)); }
+            else { y = Math.Min(pbH, rect.Bottom); Point1.set_y(Math.Max(0, rect.Y)); }
+        }
+    }
+
+    public class CPolygon: CObject
+    {
+        private Point[] arrPoints;
+        private int count;
+        private int max_count;
+        public CPolygon(int maxcount)
+        {
+            max_count = maxcount;
+            arrPoints = new Point[max_count];
+            count = 0;
+            for (int i = 0; i < max_count; ++i)
+                arrPoints[i] = default;
+        }
+        ~CPolygon()
+        {
+            for (int i = 0; i < count; ++i)
+                arrPoints[i] = default;
+            count = 0;
+            arrPoints = null;
+        }
+        public bool addPoint(CObject p, Color new_color)
+        {
+            if (count > max_count)
+                return false;
+            color = new_color;
+            p.set_color(new_color);
+            arrPoints[count++] = new Point(p.get_x(),p.get_y());
+            return true;
+        }
+        public bool finish_build()
+        {
+            if (count >= 3) return true;
+            else return false;
+        }
+        public override void draw(PaintEventArgs e)
+        {
+            Brush.normPen.Color = color;
+            if (highlighted == false)
+                e.Graphics.DrawPolygon(Brush.normPen, arrPoints);
+            else e.Graphics.DrawPolygon(Brush.highlightPen, arrPoints);
+        }
+        public override bool mouseClick_on_Object(int x_, int y_)
+        {
+            GraphicsPath path = new GraphicsPath();
+            path.AddPolygon(arrPoints);
+            Region rgn = new Region(path);
+            if (rgn.IsVisible(x_, y_))
+                return true;
+            else return false;
+        }
+        public override void move(int move, int pbW, int pbH)
+        {
+            base.move(move, pbW, pbH);
         }
     }
 }
