@@ -104,9 +104,8 @@ namespace Lab6_OOP
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(599, 476);
+            this.pictureBox1.Size = new System.Drawing.Size(685, 635);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
@@ -123,8 +122,9 @@ namespace Lab6_OOP
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(147, 476);
+            this.panel1.Size = new System.Drawing.Size(168, 635);
             this.panel1.TabIndex = 1;
             // 
             // panel7
@@ -132,17 +132,19 @@ namespace Lab6_OOP
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel7.Controls.Add(this.btn_clear);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(0, 434);
+            this.panel7.Location = new System.Drawing.Point(0, 577);
+            this.panel7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(145, 40);
+            this.panel7.Size = new System.Drawing.Size(166, 56);
             this.panel7.TabIndex = 17;
             // 
             // btn_clear
             // 
             this.btn_clear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btn_clear.Location = new System.Drawing.Point(25, 5);
+            this.btn_clear.Location = new System.Drawing.Point(29, 10);
+            this.btn_clear.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_clear.Name = "btn_clear";
-            this.btn_clear.Size = new System.Drawing.Size(94, 23);
+            this.btn_clear.Size = new System.Drawing.Size(107, 31);
             this.btn_clear.TabIndex = 16;
             this.btn_clear.Text = "Clear";
             this.btn_clear.UseVisualStyleBackColor = true;
@@ -158,9 +160,10 @@ namespace Lab6_OOP
             this.panel6.Controls.Add(this.label6);
             this.panel6.Controls.Add(this.label7);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Location = new System.Drawing.Point(0, 366);
+            this.panel6.Location = new System.Drawing.Point(0, 487);
+            this.panel6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(145, 68);
+            this.panel6.Size = new System.Drawing.Size(166, 90);
             this.panel6.TabIndex = 15;
             // 
             // pictureBox5
@@ -168,9 +171,10 @@ namespace Lab6_OOP
             this.pictureBox5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox5.BackgroundImage")));
             this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox5.Location = new System.Drawing.Point(87, 16);
+            this.pictureBox5.Location = new System.Drawing.Point(99, 21);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox5.Size = new System.Drawing.Size(23, 26);
             this.pictureBox5.TabIndex = 17;
             this.pictureBox5.TabStop = false;
             // 
@@ -179,9 +183,10 @@ namespace Lab6_OOP
             this.pictureBox4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox4.BackgroundImage")));
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox4.Location = new System.Drawing.Point(64, 39);
+            this.pictureBox4.Location = new System.Drawing.Point(73, 52);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox4.Size = new System.Drawing.Size(23, 26);
             this.pictureBox4.TabIndex = 16;
             this.pictureBox4.TabStop = false;
             // 
@@ -191,9 +196,10 @@ namespace Lab6_OOP
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(110, 39);
+            this.pictureBox3.Location = new System.Drawing.Point(126, 52);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox3.Size = new System.Drawing.Size(23, 26);
             this.pictureBox3.TabIndex = 15;
             this.pictureBox3.TabStop = false;
             // 
@@ -202,18 +208,19 @@ namespace Lab6_OOP
             this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox2.Location = new System.Drawing.Point(87, 39);
+            this.pictureBox2.Location = new System.Drawing.Point(99, 52);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox2.Size = new System.Drawing.Size(23, 26);
             this.pictureBox2.TabIndex = 14;
             this.pictureBox2.TabStop = false;
             // 
             // label6
             // 
             this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(8, 26);
+            this.label6.Location = new System.Drawing.Point(9, 35);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(136, 34);
+            this.label6.Size = new System.Drawing.Size(155, 45);
             this.label6.TabIndex = 13;
             this.label6.Text = "Use Ctrl+\r\nbuttons";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -221,9 +228,9 @@ namespace Lab6_OOP
             // label7
             // 
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(8, 4);
+            this.label7.Location = new System.Drawing.Point(9, 5);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(74, 23);
+            this.label7.Size = new System.Drawing.Size(85, 31);
             this.label7.TabIndex = 12;
             this.label7.Text = "Location";
             // 
@@ -233,9 +240,10 @@ namespace Lab6_OOP
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 298);
+            this.panel2.Location = new System.Drawing.Point(0, 396);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(145, 68);
+            this.panel2.Size = new System.Drawing.Size(166, 91);
             this.panel2.TabIndex = 2;
             // 
             // panel5
@@ -245,43 +253,44 @@ namespace Lab6_OOP
             this.panel5.Controls.Add(this.label5);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(145, 68);
+            this.panel5.Size = new System.Drawing.Size(166, 90);
             this.panel5.TabIndex = 14;
             // 
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(8, 26);
+            this.label4.Location = new System.Drawing.Point(9, 35);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(136, 34);
+            this.label4.Size = new System.Drawing.Size(155, 45);
             this.label4.TabIndex = 13;
             this.label4.Text = "To increase - shift \"+\"\r\nTo decrease - \"-\"";
             // 
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(8, 4);
+            this.label5.Location = new System.Drawing.Point(9, 5);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(74, 23);
+            this.label5.Size = new System.Drawing.Size(85, 31);
             this.label5.TabIndex = 12;
             this.label5.Text = "Size";
             // 
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(1, 26);
+            this.label3.Location = new System.Drawing.Point(1, 35);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(136, 34);
+            this.label3.Size = new System.Drawing.Size(155, 45);
             this.label3.TabIndex = 13;
             this.label3.Text = "To increase - shift \"+\"\r\nTo decrease - \"-\"";
             // 
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(10, 3);
+            this.label2.Location = new System.Drawing.Point(11, 4);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 23);
+            this.label2.Size = new System.Drawing.Size(85, 31);
             this.label2.TabIndex = 12;
             this.label2.Text = "Size";
             // 
@@ -312,9 +321,10 @@ namespace Lab6_OOP
             this.panel4.Controls.Add(this.btn_li_blu);
             this.panel4.Controls.Add(this.btn_blac);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 150);
+            this.panel4.Location = new System.Drawing.Point(0, 199);
+            this.panel4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(145, 148);
+            this.panel4.Size = new System.Drawing.Size(166, 197);
             this.panel4.TabIndex = 1;
             // 
             // button22
@@ -322,10 +332,9 @@ namespace Lab6_OOP
             this.button22.BackColor = System.Drawing.Color.SeaGreen;
             this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button22.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button22.Location = new System.Drawing.Point(44, 110);
-            this.button22.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button22.Location = new System.Drawing.Point(50, 147);
             this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(25, 23);
+            this.button22.Size = new System.Drawing.Size(29, 31);
             this.button22.TabIndex = 31;
             this.button22.UseVisualStyleBackColor = false;
             this.button22.Click += new System.EventHandler(this.btn_color_Click);
@@ -335,10 +344,9 @@ namespace Lab6_OOP
             this.button21.BackColor = System.Drawing.Color.LightGreen;
             this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button21.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button21.Location = new System.Drawing.Point(13, 110);
-            this.button21.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button21.Location = new System.Drawing.Point(15, 147);
             this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(25, 23);
+            this.button21.Size = new System.Drawing.Size(29, 31);
             this.button21.TabIndex = 30;
             this.button21.UseVisualStyleBackColor = false;
             this.button21.Click += new System.EventHandler(this.btn_color_Click);
@@ -348,10 +356,9 @@ namespace Lab6_OOP
             this.button15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(113)))), ((int)(((byte)(189)))));
             this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button15.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button15.Location = new System.Drawing.Point(75, 83);
-            this.button15.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button15.Location = new System.Drawing.Point(86, 111);
             this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(25, 23);
+            this.button15.Size = new System.Drawing.Size(29, 31);
             this.button15.TabIndex = 23;
             this.button15.UseVisualStyleBackColor = false;
             this.button15.Click += new System.EventHandler(this.btn_color_Click);
@@ -361,10 +368,9 @@ namespace Lab6_OOP
             this.button16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button16.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button16.Location = new System.Drawing.Point(106, 83);
-            this.button16.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button16.Location = new System.Drawing.Point(121, 111);
             this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(25, 23);
+            this.button16.Size = new System.Drawing.Size(29, 31);
             this.button16.TabIndex = 22;
             this.button16.UseVisualStyleBackColor = false;
             this.button16.Click += new System.EventHandler(this.btn_color_Click);
@@ -374,10 +380,9 @@ namespace Lab6_OOP
             this.button20.BackColor = System.Drawing.Color.DodgerBlue;
             this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button20.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button20.Location = new System.Drawing.Point(44, 83);
-            this.button20.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button20.Location = new System.Drawing.Point(50, 111);
             this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(25, 23);
+            this.button20.Size = new System.Drawing.Size(29, 31);
             this.button20.TabIndex = 21;
             this.button20.UseVisualStyleBackColor = false;
             this.button20.Click += new System.EventHandler(this.btn_color_Click);
@@ -387,10 +392,9 @@ namespace Lab6_OOP
             this.button19.BackColor = System.Drawing.Color.Orchid;
             this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button19.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button19.Location = new System.Drawing.Point(75, 56);
-            this.button19.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button19.Location = new System.Drawing.Point(86, 75);
             this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(25, 23);
+            this.button19.Size = new System.Drawing.Size(29, 31);
             this.button19.TabIndex = 29;
             this.button19.UseVisualStyleBackColor = false;
             this.button19.Click += new System.EventHandler(this.btn_color_Click);
@@ -400,10 +404,9 @@ namespace Lab6_OOP
             this.button18.BackColor = System.Drawing.Color.Crimson;
             this.button18.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button18.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button18.Location = new System.Drawing.Point(106, 56);
-            this.button18.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button18.Location = new System.Drawing.Point(121, 75);
             this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(25, 23);
+            this.button18.Size = new System.Drawing.Size(29, 31);
             this.button18.TabIndex = 28;
             this.button18.UseVisualStyleBackColor = false;
             this.button18.Click += new System.EventHandler(this.btn_color_Click);
@@ -413,10 +416,9 @@ namespace Lab6_OOP
             this.button13.BackColor = System.Drawing.Color.HotPink;
             this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button13.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button13.Location = new System.Drawing.Point(44, 56);
-            this.button13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button13.Location = new System.Drawing.Point(50, 75);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(25, 23);
+            this.button13.Size = new System.Drawing.Size(29, 31);
             this.button13.TabIndex = 27;
             this.button13.UseVisualStyleBackColor = false;
             this.button13.Click += new System.EventHandler(this.btn_color_Click);
@@ -426,10 +428,9 @@ namespace Lab6_OOP
             this.btn_white.BackColor = System.Drawing.Color.White;
             this.btn_white.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_white.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_white.Location = new System.Drawing.Point(13, 29);
-            this.btn_white.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_white.Location = new System.Drawing.Point(15, 39);
             this.btn_white.Name = "btn_white";
-            this.btn_white.Size = new System.Drawing.Size(25, 23);
+            this.btn_white.Size = new System.Drawing.Size(29, 31);
             this.btn_white.TabIndex = 26;
             this.btn_white.UseVisualStyleBackColor = false;
             this.btn_white.Click += new System.EventHandler(this.btn_color_Click);
@@ -441,10 +442,9 @@ namespace Lab6_OOP
             this.btn_other.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_other.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_other.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_other.Location = new System.Drawing.Point(106, 110);
-            this.btn_other.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_other.Location = new System.Drawing.Point(121, 147);
             this.btn_other.Name = "btn_other";
-            this.btn_other.Size = new System.Drawing.Size(25, 23);
+            this.btn_other.Size = new System.Drawing.Size(29, 31);
             this.btn_other.TabIndex = 25;
             this.btn_other.UseVisualStyleBackColor = false;
             this.btn_other.Click += new System.EventHandler(this.btn_other_Click);
@@ -452,9 +452,9 @@ namespace Lab6_OOP
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(8, 4);
+            this.label1.Location = new System.Drawing.Point(9, 5);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 23);
+            this.label1.Size = new System.Drawing.Size(114, 31);
             this.label1.TabIndex = 12;
             this.label1.Text = "Color";
             // 
@@ -463,8 +463,7 @@ namespace Lab6_OOP
             this.btn_oran.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btn_oran.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_oran.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_oran.Location = new System.Drawing.Point(62, 27);
-            this.btn_oran.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_oran.Location = new System.Drawing.Point(71, 36);
             this.btn_oran.Name = "btn_oran";
             this.btn_oran.Size = new System.Drawing.Size(0, 0);
             this.btn_oran.TabIndex = 3;
@@ -475,10 +474,9 @@ namespace Lab6_OOP
             this.button12.BackColor = System.Drawing.Color.Orange;
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button12.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button12.Location = new System.Drawing.Point(75, 29);
-            this.button12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button12.Location = new System.Drawing.Point(86, 39);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(25, 23);
+            this.button12.Size = new System.Drawing.Size(29, 31);
             this.button12.TabIndex = 18;
             this.button12.UseVisualStyleBackColor = false;
             this.button12.Click += new System.EventHandler(this.btn_color_Click);
@@ -488,8 +486,7 @@ namespace Lab6_OOP
             this.btn_viol.BackColor = System.Drawing.Color.DarkOrchid;
             this.btn_viol.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_viol.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_viol.Location = new System.Drawing.Point(67, 61);
-            this.btn_viol.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_viol.Location = new System.Drawing.Point(77, 81);
             this.btn_viol.Name = "btn_viol";
             this.btn_viol.Size = new System.Drawing.Size(0, 0);
             this.btn_viol.TabIndex = 8;
@@ -500,8 +497,7 @@ namespace Lab6_OOP
             this.btn_blu.BackColor = System.Drawing.Color.Blue;
             this.btn_blu.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_blu.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_blu.Location = new System.Drawing.Point(41, 61);
-            this.btn_blu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_blu.Location = new System.Drawing.Point(47, 81);
             this.btn_blu.Name = "btn_blu";
             this.btn_blu.Size = new System.Drawing.Size(0, 0);
             this.btn_blu.TabIndex = 7;
@@ -512,10 +508,9 @@ namespace Lab6_OOP
             this.btn_gre.BackColor = System.Drawing.Color.LightPink;
             this.btn_gre.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_gre.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_gre.Location = new System.Drawing.Point(13, 56);
-            this.btn_gre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_gre.Location = new System.Drawing.Point(15, 75);
             this.btn_gre.Name = "btn_gre";
-            this.btn_gre.Size = new System.Drawing.Size(25, 23);
+            this.btn_gre.Size = new System.Drawing.Size(29, 31);
             this.btn_gre.TabIndex = 20;
             this.btn_gre.UseVisualStyleBackColor = false;
             this.btn_gre.Click += new System.EventHandler(this.btn_color_Click);
@@ -525,8 +520,7 @@ namespace Lab6_OOP
             this.btn_red.BackColor = System.Drawing.Color.Red;
             this.btn_red.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_red.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_red.Location = new System.Drawing.Point(36, 27);
-            this.btn_red.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_red.Location = new System.Drawing.Point(41, 36);
             this.btn_red.Name = "btn_red";
             this.btn_red.Size = new System.Drawing.Size(0, 0);
             this.btn_red.TabIndex = 2;
@@ -538,10 +532,9 @@ namespace Lab6_OOP
             this.button14.BackColor = System.Drawing.Color.Coral;
             this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button14.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button14.Location = new System.Drawing.Point(106, 29);
-            this.button14.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button14.Location = new System.Drawing.Point(121, 39);
             this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(25, 23);
+            this.button14.Size = new System.Drawing.Size(29, 31);
             this.button14.TabIndex = 17;
             this.button14.UseVisualStyleBackColor = false;
             this.button14.Click += new System.EventHandler(this.btn_color_Click);
@@ -551,8 +544,7 @@ namespace Lab6_OOP
             this.btn_whit.BackColor = System.Drawing.Color.White;
             this.btn_whit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_whit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_whit.Location = new System.Drawing.Point(10, 27);
-            this.btn_whit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_whit.Location = new System.Drawing.Point(11, 36);
             this.btn_whit.Name = "btn_whit";
             this.btn_whit.Size = new System.Drawing.Size(0, 0);
             this.btn_whit.TabIndex = 1;
@@ -563,10 +555,9 @@ namespace Lab6_OOP
             this.button17.BackColor = System.Drawing.Color.LightSkyBlue;
             this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button17.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button17.Location = new System.Drawing.Point(13, 83);
-            this.button17.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button17.Location = new System.Drawing.Point(15, 111);
             this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(25, 23);
+            this.button17.Size = new System.Drawing.Size(29, 31);
             this.button17.TabIndex = 21;
             this.button17.UseVisualStyleBackColor = false;
             this.button17.Click += new System.EventHandler(this.btn_color_Click);
@@ -576,10 +567,9 @@ namespace Lab6_OOP
             this.btn_yel.BackColor = System.Drawing.Color.Gold;
             this.btn_yel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_yel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_yel.Location = new System.Drawing.Point(44, 29);
-            this.btn_yel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_yel.Location = new System.Drawing.Point(50, 39);
             this.btn_yel.Name = "btn_yel";
-            this.btn_yel.Size = new System.Drawing.Size(25, 23);
+            this.btn_yel.Size = new System.Drawing.Size(29, 31);
             this.btn_yel.TabIndex = 19;
             this.btn_yel.UseVisualStyleBackColor = false;
             this.btn_yel.Click += new System.EventHandler(this.btn_color_Click);
@@ -589,8 +579,7 @@ namespace Lab6_OOP
             this.btn_li_blu.BackColor = System.Drawing.Color.Aqua;
             this.btn_li_blu.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_li_blu.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_li_blu.Location = new System.Drawing.Point(15, 61);
-            this.btn_li_blu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_li_blu.Location = new System.Drawing.Point(17, 81);
             this.btn_li_blu.Name = "btn_li_blu";
             this.btn_li_blu.Size = new System.Drawing.Size(0, 0);
             this.btn_li_blu.TabIndex = 6;
@@ -601,10 +590,9 @@ namespace Lab6_OOP
             this.btn_blac.BackColor = System.Drawing.Color.DarkGray;
             this.btn_blac.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_blac.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btn_blac.Location = new System.Drawing.Point(75, 110);
-            this.btn_blac.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_blac.Location = new System.Drawing.Point(86, 147);
             this.btn_blac.Name = "btn_blac";
-            this.btn_blac.Size = new System.Drawing.Size(25, 23);
+            this.btn_blac.Size = new System.Drawing.Size(29, 31);
             this.btn_blac.TabIndex = 24;
             this.btn_blac.UseVisualStyleBackColor = false;
             this.btn_blac.Click += new System.EventHandler(this.btn_color_Click);
@@ -624,16 +612,17 @@ namespace Lab6_OOP
             this.panel3.Controls.Add(this.CCircle);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(145, 150);
+            this.panel3.Size = new System.Drawing.Size(166, 199);
             this.panel3.TabIndex = 0;
             // 
             // lb_shape
             // 
             this.lb_shape.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lb_shape.Location = new System.Drawing.Point(8, 5);
+            this.lb_shape.Location = new System.Drawing.Point(9, 7);
             this.lb_shape.Name = "lb_shape";
-            this.lb_shape.Size = new System.Drawing.Size(74, 23);
+            this.lb_shape.Size = new System.Drawing.Size(85, 31);
             this.lb_shape.TabIndex = 11;
             this.lb_shape.Text = "Shape";
             // 
@@ -642,13 +631,11 @@ namespace Lab6_OOP
             this.CPolygon.BackColor = System.Drawing.Color.Gainsboro;
             this.CPolygon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CPolygon.BackgroundImage")));
             this.CPolygon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.CPolygon.Enabled = false;
             this.CPolygon.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.CPolygon.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.CPolygon.Location = new System.Drawing.Point(98, 109);
-            this.CPolygon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CPolygon.Location = new System.Drawing.Point(112, 145);
             this.CPolygon.Name = "CPolygon";
-            this.CPolygon.Size = new System.Drawing.Size(38, 35);
+            this.CPolygon.Size = new System.Drawing.Size(43, 47);
             this.CPolygon.TabIndex = 10;
             this.CPolygon.UseVisualStyleBackColor = false;
             this.CPolygon.Click += new System.EventHandler(this.btn_shape_Click);
@@ -660,10 +647,9 @@ namespace Lab6_OOP
             this.CTrapeze.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.CTrapeze.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.CTrapeze.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.CTrapeze.Location = new System.Drawing.Point(53, 109);
-            this.CTrapeze.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CTrapeze.Location = new System.Drawing.Point(61, 145);
             this.CTrapeze.Name = "CTrapeze";
-            this.CTrapeze.Size = new System.Drawing.Size(38, 35);
+            this.CTrapeze.Size = new System.Drawing.Size(43, 47);
             this.CTrapeze.TabIndex = 9;
             this.CTrapeze.UseVisualStyleBackColor = false;
             this.CTrapeze.Click += new System.EventHandler(this.btn_shape_Click);
@@ -675,10 +661,9 @@ namespace Lab6_OOP
             this.CLine.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.CLine.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.CLine.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.CLine.Location = new System.Drawing.Point(8, 109);
-            this.CLine.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CLine.Location = new System.Drawing.Point(9, 145);
             this.CLine.Name = "CLine";
-            this.CLine.Size = new System.Drawing.Size(38, 35);
+            this.CLine.Size = new System.Drawing.Size(43, 47);
             this.CLine.TabIndex = 8;
             this.CLine.UseVisualStyleBackColor = false;
             this.CLine.Click += new System.EventHandler(this.btn_shape_Click);
@@ -690,10 +675,9 @@ namespace Lab6_OOP
             this.CRhomb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.CRhomb.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.CRhomb.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.CRhomb.Location = new System.Drawing.Point(98, 69);
-            this.CRhomb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CRhomb.Location = new System.Drawing.Point(112, 92);
             this.CRhomb.Name = "CRhomb";
-            this.CRhomb.Size = new System.Drawing.Size(38, 35);
+            this.CRhomb.Size = new System.Drawing.Size(43, 47);
             this.CRhomb.TabIndex = 7;
             this.CRhomb.UseVisualStyleBackColor = false;
             this.CRhomb.Click += new System.EventHandler(this.btn_shape_Click);
@@ -705,10 +689,9 @@ namespace Lab6_OOP
             this.CEllipse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.CEllipse.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.CEllipse.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.CEllipse.Location = new System.Drawing.Point(53, 69);
-            this.CEllipse.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CEllipse.Location = new System.Drawing.Point(61, 92);
             this.CEllipse.Name = "CEllipse";
-            this.CEllipse.Size = new System.Drawing.Size(38, 35);
+            this.CEllipse.Size = new System.Drawing.Size(43, 47);
             this.CEllipse.TabIndex = 6;
             this.CEllipse.UseVisualStyleBackColor = false;
             this.CEllipse.Click += new System.EventHandler(this.btn_shape_Click);
@@ -720,10 +703,9 @@ namespace Lab6_OOP
             this.CRectangle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.CRectangle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.CRectangle.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.CRectangle.Location = new System.Drawing.Point(8, 69);
-            this.CRectangle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CRectangle.Location = new System.Drawing.Point(9, 92);
             this.CRectangle.Name = "CRectangle";
-            this.CRectangle.Size = new System.Drawing.Size(38, 35);
+            this.CRectangle.Size = new System.Drawing.Size(43, 47);
             this.CRectangle.TabIndex = 5;
             this.CRectangle.UseVisualStyleBackColor = false;
             this.CRectangle.Click += new System.EventHandler(this.btn_shape_Click);
@@ -735,10 +717,9 @@ namespace Lab6_OOP
             this.CSquare.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.CSquare.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.CSquare.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.CSquare.Location = new System.Drawing.Point(98, 29);
-            this.CSquare.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CSquare.Location = new System.Drawing.Point(112, 39);
             this.CSquare.Name = "CSquare";
-            this.CSquare.Size = new System.Drawing.Size(38, 35);
+            this.CSquare.Size = new System.Drawing.Size(43, 47);
             this.CSquare.TabIndex = 4;
             this.CSquare.UseVisualStyleBackColor = false;
             this.CSquare.Click += new System.EventHandler(this.btn_shape_Click);
@@ -750,10 +731,9 @@ namespace Lab6_OOP
             this.CTriangle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.CTriangle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.CTriangle.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.CTriangle.Location = new System.Drawing.Point(53, 29);
-            this.CTriangle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CTriangle.Location = new System.Drawing.Point(61, 39);
             this.CTriangle.Name = "CTriangle";
-            this.CTriangle.Size = new System.Drawing.Size(38, 35);
+            this.CTriangle.Size = new System.Drawing.Size(43, 47);
             this.CTriangle.TabIndex = 3;
             this.CTriangle.UseVisualStyleBackColor = false;
             this.CTriangle.Click += new System.EventHandler(this.btn_shape_Click);
@@ -765,10 +745,9 @@ namespace Lab6_OOP
             this.CCircle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.CCircle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.CCircle.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.CCircle.Location = new System.Drawing.Point(8, 29);
-            this.CCircle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CCircle.Location = new System.Drawing.Point(9, 39);
             this.CCircle.Name = "CCircle";
-            this.CCircle.Size = new System.Drawing.Size(38, 35);
+            this.CCircle.Size = new System.Drawing.Size(43, 47);
             this.CCircle.TabIndex = 2;
             this.CCircle.UseVisualStyleBackColor = false;
             this.CCircle.Click += new System.EventHandler(this.btn_shape_Click);
@@ -777,21 +756,21 @@ namespace Lab6_OOP
             // 
             this.panel8.Controls.Add(this.pictureBox1);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(147, 0);
+            this.panel8.Location = new System.Drawing.Point(168, 0);
+            this.panel8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(599, 476);
+            this.panel8.Size = new System.Drawing.Size(685, 635);
             this.panel8.TabIndex = 2;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(746, 476);
+            this.ClientSize = new System.Drawing.Size(853, 635);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "Laboratory work №6";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);

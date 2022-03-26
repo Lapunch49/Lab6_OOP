@@ -330,7 +330,6 @@ namespace Lab6_OOP
             return new CRhomb(x, y, color);
         }
     }
-
     public class CTrapeze : CRectangle
     {
         public CTrapeze(int x, int y, Color color) : base(x, y, color) { }
@@ -354,7 +353,7 @@ namespace Lab6_OOP
         }
         public override bool mouseClick_on_Object(int x_, int y_)
         {
-            System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
+            GraphicsPath path = new GraphicsPath();
             path.AddPolygon(get_arrPoints());
             Region rgn = new Region(path);
             return (rgn.IsVisible(x_, y_) == true);
@@ -454,60 +453,90 @@ namespace Lab6_OOP
             else { y = Math.Min(pbH, rect.Bottom); Point1.set_y(Math.Max(0, rect.Y)); }
         }
     }
-
-    public class CPolygon: CObject
+    //public class CPolygon: CObject
+    //{
+    //    private Point[] arrPoints;
+    //    private int count;
+    //    private int max_count;
+    //    public CPolygon(int maxcount)
+    //    {
+    //        max_count = maxcount;
+    //        arrPoints = new Point[max_count];
+    //        count = 0;
+    //        for (int i = 0; i < max_count; ++i)
+    //            arrPoints[i] = default;
+    //    }
+    //    ~CPolygon()
+    //    {
+    //        for (int i = 0; i < count; ++i)
+    //            arrPoints[i] = default;
+    //        count = 0;
+    //        arrPoints = null;
+    //    }
+    //    public bool addPoint(CObject p, Color new_color)
+    //    {
+    //        if (count > max_count)
+    //            return false;
+    //        color = new_color;
+    //        p.set_color(new_color);
+    //        arrPoints[count++] = new Point(p.get_x(),p.get_y());
+    //        return true;
+    //    }
+    //    public bool finish_build()
+    //    {
+    //        if (count >= 3) return true;
+    //        else return false;
+    //    }
+    //    public override void draw(PaintEventArgs e)
+    //    {
+    //        Brush.normPen.Color = color;
+    //        if (highlighted == false)
+    //            e.Graphics.DrawPolygon(Brush.normPen, arrPoints);
+    //        else e.Graphics.DrawPolygon(Brush.highlightPen, arrPoints);
+    //    }
+    //    public override bool mouseClick_on_Object(int x_, int y_)
+    //    {
+    //        GraphicsPath path = new GraphicsPath();
+    //        path.AddPolygon(arrPoints);
+    //        Region rgn = new Region(path);
+    //        if (rgn.IsVisible(x_, y_))
+    //            return true;
+    //        else return false;
+    //    }
+    //    public override void move(int move, int pbW, int pbH)
+    //    {
+    //        base.move(move, pbW, pbH);
+    //    }
+    //}
+    public class CPolygon : CSquare
     {
-        private Point[] arrPoints;
-        private int count;
-        private int max_count;
-        public CPolygon(int maxcount)
+        public CPolygon(int x, int y, Color color) : base(x, y, color) { }
+        Point[] get_arrPoints()
         {
-            max_count = maxcount;
-            arrPoints = new Point[max_count];
-            count = 0;
-            for (int i = 0; i < max_count; ++i)
-                arrPoints[i] = default;
-        }
-        ~CPolygon()
-        {
-            for (int i = 0; i < count; ++i)
-                arrPoints[i] = default;
-            count = 0;
-            arrPoints = null;
-        }
-        public bool addPoint(CObject p, Color new_color)
-        {
-            if (count > max_count)
-                return false;
-            color = new_color;
-            p.set_color(new_color);
-            arrPoints[count++] = new Point(p.get_x(),p.get_y());
-            return true;
-        }
-        public bool finish_build()
-        {
-            if (count >= 3) return true;
-            else return false;
+            return new Point[]{
+                new Point(x - w / 2, y), new Point(x - w / 4, y - h / 2), new Point(x + w / 4, y - h / 2),
+                new Point(x + w / 2, y), new Point(x + w / 4, y + h / 2), new Point(x - w / 4, y + h / 2)};
         }
         public override void draw(PaintEventArgs e)
         {
-            Brush.normPen.Color = color;
+            Brush.normBrush.Color = color;
             if (highlighted == false)
-                e.Graphics.DrawPolygon(Brush.normPen, arrPoints);
-            else e.Graphics.DrawPolygon(Brush.highlightPen, arrPoints);
+                e.Graphics.FillPolygon(Brush.normBrush, get_arrPoints());
+            else e.Graphics.FillPolygon(Brush.highlightBrush, get_arrPoints());
         }
         public override bool mouseClick_on_Object(int x_, int y_)
         {
             GraphicsPath path = new GraphicsPath();
-            path.AddPolygon(arrPoints);
+            path.AddPolygon(get_arrPoints());
             Region rgn = new Region(path);
             if (rgn.IsVisible(x_, y_))
                 return true;
             else return false;
         }
-        public override void move(int move, int pbW, int pbH)
+        public override string classname() { return "CPolygon"; }
+        public override CObject new_obj(int x, int y, Color color)
         {
-            base.move(move, pbW, pbH);
+            return new CPolygon(x, y, color);
         }
     }
 }

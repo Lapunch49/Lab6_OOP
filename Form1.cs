@@ -25,7 +25,8 @@ namespace Lab6_OOP
             new CSquare(0,0, c),
             new CEllipse(0,0,c),
             new CRhomb(0,0,c),
-            new CTrapeze(0,0,c)
+            new CTrapeze(0,0,c),
+            new CPolygon(0,0,c)
         };
         string cur_select = "CCircle"; // текущий выбор фигуры, которая будет создаваться при нажатии на пустое место 
         CObject line_st = null; // точка - начало отрезка
@@ -127,9 +128,11 @@ namespace Lab6_OOP
                     setAllHighlightFalse();
 
                     // создаем новый объект
-                    // если нов. об. не линия и не многоугольник
-                    if (cur_select != "CLine" && cur_select != "CPolygon")
-                    {
+                    //// если нов. об. не линия и не многоугольник
+                    //if (cur_select != "CLine" && cur_select != "CPolygon")
+                    // если нов. об. не линия
+                    if (cur_select != "CLine")
+                        {
                         CObject newObj = createObj();
                         newObj = newObj.new_obj(e.X, e.Y, Brush.normBrush.Color);
                         storObj.add(newObj);
