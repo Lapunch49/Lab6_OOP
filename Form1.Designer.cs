@@ -826,7 +826,6 @@ namespace Lab6_OOP
         private System.Windows.Forms.Button CTrapeze;
         private System.Windows.Forms.Button CLine;
         private System.Windows.Forms.Button CRhomb;
-        private System.Windows.Forms.Button btn_CEllipse;
         private System.Windows.Forms.Button CRectangle;
         private System.Windows.Forms.Button btn_clear;
         private System.Windows.Forms.Panel panel7;

@@ -47,19 +47,14 @@ namespace Lab6_OOP
             // удаление объектов
             if (e.KeyCode == Keys.Delete) // выделенные объекты удалятся из хранилища, и произойдет перерисовка
             {
-                for (int i = 0; i < storObj.get_count(); ++i)
-                {
-                    if (storObj.get_el(i).get_highlighted() == true)
-                    {
-                        storObj.del(i);
-                        i--;
-                    }
-                }
+                storObj.del_highlighted_objects();
             }
+
 
             // увеличение-уменьшение размера объектов 
             bool changeSize = false;
             bool size_delt = false;
+
             // увеличение размера объектов 
             if (e.KeyCode == Keys.Oemplus && shiftPress == true)
             {
@@ -69,11 +64,12 @@ namespace Lab6_OOP
             // уменьшение размера объектов
             if (e.KeyCode == Keys.OemMinus)
                 changeSize = true;
+
             // применяем изменения к объектам
             if (changeSize == true)
-                for (int i = 0; i < storObj.get_count(); ++i)
-                    if (storObj.get_el(i).get_highlighted() == true)
-                        storObj.get_el(i).resize(size_delt, pictureBox1.Width, pictureBox1.Height);
+                storObj.resize_highlighted_objects(size_delt, pictureBox1.Width, pictureBox1.Height);
+
+
 
             // передвижение объектов вправо-влево-вверх-вниз
             int move = 0;
@@ -87,9 +83,7 @@ namespace Lab6_OOP
             }
             if (move != 0)
             {
-                for (int i = 0; i < storObj.get_count(); ++i)
-                    if (storObj.get_el(i).get_highlighted() == true)
-                        storObj.get_el(i).move(move, pictureBox1.Width, pictureBox1.Height);
+                storObj.move_highlighted_objects(move, pictureBox1.Width, pictureBox1.Height);
             }
 
             pictureBox1.Invalidate();
@@ -103,13 +97,7 @@ namespace Lab6_OOP
             ctrlPress = e.Control;
             shiftPress = e.Shift;
         }
-        private void setAllHighlightFalse()
-        {
-            // в хранилище меняем у выделенных объектов св. выделенности
-            for (int i = 0; i < storObj.get_count(); ++i)
-                if (storObj.get_el(i).get_highlighted() == true)
-                    storObj.get_el(i).change_highlight();
-        }
+
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -117,19 +105,15 @@ namespace Lab6_OOP
                 int ind = -1; // попадание по объекту с индексом ind
 
                 // определяем попадание по существующему объекту 
-                for (int i = 0; i < storObj.get_count(); ++i)
-                    if (storObj.get_el(i).mouseClick_on_Object(e.X, e.Y))
-                        ind = i;
+                ind = storObj.mouseClick_on_Object(e.X, e.Y);
 
                 // не попали по объекту 
                 if (ind == -1)
                 {
                     // убираем все выделения
-                    setAllHighlightFalse();
+                    storObj.setAllHighlightFalse();
 
                     // создаем новый объект
-                    //// если нов. об. не линия и не многоугольник
-                    //if (cur_select != "CLine" && cur_select != "CPolygon")
                     // если нов. об. не линия
                     if (cur_select != "CLine")
                         {
@@ -165,11 +149,11 @@ namespace Lab6_OOP
                         ind = storObj.get_count() - 1;
                     }
 
-                    //если не дорисовываем отрезок, проверяем ctrl
+                    // если не дорисовываем отрезок, проверяем ctrl
                     // если ctrl не зажат - убираем остальные выделения
                     else if (ctrlPress != true)
                     {
-                        setAllHighlightFalse();
+                        storObj.setAllHighlightFalse();
                     }
                 }
                 // выделяем объект, по которому попали
@@ -180,9 +164,7 @@ namespace Lab6_OOP
         }
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
-            for (int i = 0; i < storObj.get_count(); ++i)
-                if (storObj.get_el(i) != null)
-                    storObj.get_el(i).draw(e);
+            storObj.draw_objects(e);
             // возвращаем цвет кистям
             Brush.normBrush.Color = Brush.Color;
             Brush.normPen.Color = Brush.Color;
@@ -204,9 +186,7 @@ namespace Lab6_OOP
         {
             Color new_color = ((Button)sender).BackColor;
             // у выделенных объектов меняем цвет
-            for (int i = 0; i < storObj.get_count(); ++i)
-                if (storObj.get_el(i).get_highlighted() == true)
-                    storObj.get_el(i).set_color(new_color);
+            storObj.setColor_highlighted_objects(new_color);
             // меняем текущий цвет, используемый при рисовании новых фигур
             Brush.Color = new_color;
             Brush.normBrush.Color = new_color;
@@ -231,11 +211,7 @@ namespace Lab6_OOP
         }
         private void btn_clear_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < storObj.get_count(); ++i)
-            {
-                storObj.del(i);
-                i--;
-            }
+            storObj.del_all_objects();
             pictureBox1.Invalidate();
         }
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
